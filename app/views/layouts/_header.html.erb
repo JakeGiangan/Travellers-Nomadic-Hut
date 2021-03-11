@@ -11,14 +11,14 @@
             <i class='fa fa-user-circle'> </i>
         </button>
             <div role="menu" class="dropdown-menu">
-                <% if logged_in? %>
+                <% if user_signed_in? %>
                     <a role="presentation" class="dropdown-item" href="#"><i class='fa fa-user-circle'></i> Profile</a>
                     <div class="dropdown-divider"></div>
-                    <%= link_to raw("<i class='fa fa-sign-out-alt'></i> Logout"), logout_path, class: "dropdown-item", method: :delete %>
+                    <%= link_to raw("<i class='fa fa-sign-out-alt'></i> Logout"), destroy_user_session_path, class: "dropdown-item", method: :delete %>
                 <% else %>
-                    <%= link_to raw("<i class='fa fa-sign-in-alt'></i> Login"), login_url, class: "dropdown-item" %>
+                    <%= link_to raw("<i class='fa fa-sign-in-alt'></i> Login"), new_user_session_path, class: "dropdown-item" %>
                     <div class="dropdown-divider"></div>
-                    <%= link_to raw("<i class='fas fa-user'></i> Sign up as a Host"), new_user_url, class: "dropdown-item" %>  
+                    <%= link_to raw("<i class='fas fa-user'></i> Sign up as a Host"), new_user_registration_url, class: "dropdown-item" %>  
                     <a role="presentation" class="dropdown-item" href="#"><i class='far fa-user'></i> Sign up as a Guest</a>
                 <% end %>
             </div>

@@ -11,7 +11,7 @@
     </div>
   </div>
     <div class="col-lg-8 offset-lg-2">
-    <%= form_for(:session, url: sessions_path) do |f|  %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="row fieldRowSpace" >
         <div class="col">
         <%= f.text_field :email, class: "roundedFormField" ,placeholder: "Email Address", style: "min-width: 300px" %>
@@ -21,9 +21,9 @@
         </div>
       </div>
       <div class="row fieldRowSpace text-center">
-        <p>New here?  <%= link_to "Sign up", new_user_url, class: "greenText" %> now!</p>
+        <p>New here?  <%= link_to "Sign up", new_user_registration_url, class: "greenText" %> now!</p>
       </div>
-      <div class="row fieldRowSpace" >
+      <div class="row fieldRowSpace" style="margin-bottom: 100px">
         <div class="col d-xl-flex justify-content-xl-center">
           <%= f.submit "Login", class: "btn btn-outline-success roundedButton", style: "margin-right: 20px;" %>
           <%= link_to "Cancel", root_url,class: "btn btn-outline-danger roundedButton", style: "margin-left: 20px;" %>
