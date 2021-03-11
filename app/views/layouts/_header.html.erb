@@ -1,7 +1,7 @@
 <div class="sticky-top">
     <nav class="navbar header justify-content-between">
     <div class='offset-lg-2 offset-md-2'>
-        <a class="navbar-brand text-white">Traveller's Nomadic Hut</a>
+        <a class="navbar-brand text-white MontserratFont">Traveller's Nomadic Hut</a>
     </div>
 
     <div class="pull-right col-lg-2 col-md-2 col-xs-4">
@@ -11,15 +11,16 @@
             <i class='fa fa-user-circle'> </i>
         </button>
             <div role="menu" class="dropdown-menu">
-                <a role="presentation" class="dropdown-item" href="#"><i class='fa fa-user-circle'></i> Profile</a>
-                <div class="dropdown-divider"></div>
-                <a role="presentation" class="dropdown-item" href="#"><i class='fa fa-sign-in-alt'></i> Log in as Host</a>
-                <a role="presentation" class="dropdown-item" href="#"><i class='fas fa-user'></i> Sign up as a Host</a>
-                <div class="dropdown-divider"></div>
-                <a role="presentation" class="dropdown-item" href="#"><i class='fa fa-sign-in-alt'></i> Log in as Guest</a>
-                <a role="presentation" class="dropdown-item" href="#"><i class='far fa-user'></i> Sign up as a Guest</a>
-                <div class="dropdown-divider"></div>
-                <a role="presentation" class="dropdown-item" href="#"><i class='fa fa-sign-out-alt'></i> Logout</a>
+                <% if logged_in? %>
+                    <a role="presentation" class="dropdown-item" href="#"><i class='fa fa-user-circle'></i> Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <%= link_to raw("<i class='fa fa-sign-out-alt'></i> Logout"), logout_path, class: "dropdown-item", method: :delete %>
+                <% else %>
+                    <%= link_to raw("<i class='fa fa-sign-in-alt'></i> Login"), login_url, class: "dropdown-item" %>
+                    <div class="dropdown-divider"></div>
+                    <%= link_to raw("<i class='fas fa-user'></i> Sign up as a Host"), new_user_url, class: "dropdown-item" %>  
+                    <a role="presentation" class="dropdown-item" href="#"><i class='far fa-user'></i> Sign up as a Guest</a>
+                <% end %>
             </div>
         </div>
     </div>
@@ -27,7 +28,7 @@
 
 
     <nav class="navbar navigationItems justify-content-between">
-        <a class="nav-item nav-link text-dark headerItem active" href="#">Home <span class="sr-only">(current)</span></a>
+        <%= link_to raw(" Home"), root_url, class: "nav-item nav-link text-dark headerItem" %>
         <a class="nav-item nav-link text-dark headerItem" href="#">Booking a Home</a>
         <a class="nav-item nav-link text-dark headerItem" href="#">Host your Home</a>
         <a class="nav-item nav-link text-dark headerItem" href="#">About Us</a>
