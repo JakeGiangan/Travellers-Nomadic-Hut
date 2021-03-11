@@ -1,0 +1,53 @@
+.parallax {
+  /* The image used */
+  background-image: url("home/heading.jpg");
+
+  /* Set a specific height */
+  min-height: 500px;
+
+  background-color: rgba(0, 0, 0, 0.74);
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.caption {
+  position: absolute;
+  right: 20%;
+  top: 30%;
+  width: 100%;
+  text-align: right;
+}
+
+.callToAction {
+  background-color: #000000;
+  height: 70px;
+}
+
+.callToActionButton {
+  margin-top: 5px;
+  height: 60px;
+  width: 350px;
+}
+
+.callToActionButton i.arrow {
+  margin-left: 75px;
+}
+
+.firstImage {
+  width: 600px;
+}
+
+.secondImage {
+  margin-top: 50px;
+  margin-bottom: 25px;
+  width: 600px;
+}
+
+.thirdImage {
+  margin-top: 25px;
+  margin-bottom: 50px;
+  width: 600px;
+}
