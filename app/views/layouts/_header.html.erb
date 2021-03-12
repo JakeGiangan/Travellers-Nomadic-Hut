@@ -12,7 +12,12 @@
         </button>
             <div role="menu" class="dropdown-menu">
                 <% if user_signed_in? %>
+                    <%= link_to raw("<i class='fa fa-home'></i> Home"), root_url, class: "dropdown-item"%>
                     <a role="presentation" class="dropdown-item" href="#"><i class='fa fa-user-circle'></i> Profile</a>
+                    <% if current_user.account_type === 1 %>
+                    <div class="dropdown-divider"></div>
+                    <%= link_to raw("<i class='fa fa-tachometer-alt'></i> Host Dashboard"), dashboard_index_url, class: "dropdown-item"%>
+                    <% end %>
                     <div class="dropdown-divider"></div>
                     <%= link_to raw("<i class='fa fa-sign-out-alt'></i> Logout"), destroy_user_session_path, class: "dropdown-item", method: :delete %>
                 <% else %>
@@ -25,13 +30,14 @@
         </div>
     </div>
     </nav>
-
-
-    <nav class="navbar navigationItems justify-content-between">
-        <%= link_to raw(" Home"), root_url, class: "nav-item nav-link text-dark headerItem" %>
-        <a class="nav-item nav-link text-dark headerItem" href="#">Booking a Home</a>
-        <a class="nav-item nav-link text-dark headerItem" href="#">Host your Home</a>
-        <a class="nav-item nav-link text-dark headerItem" href="#">About Us</a>
-        <a class="nav-item nav-link text-dark headerItem" href="#">Contact Us</a>
-    </nav>
+    
+    <% if yield(:title) != "Host Dashboard"%>
+        <nav class="navbar navigationItems justify-content-between">
+            <%= link_to raw(" Home"), root_url, class: "nav-item nav-link text-dark headerItem" %>
+            <a class="nav-item nav-link text-dark headerItem" href="#">Booking a Home</a>
+            <a class="nav-item nav-link text-dark headerItem" href="#">Host your Home</a>
+            <a class="nav-item nav-link text-dark headerItem" href="#">About Us</a>
+            <a class="nav-item nav-link text-dark headerItem" href="#">Contact Us</a>
+        </nav>
+    <% end %>
 </div>
