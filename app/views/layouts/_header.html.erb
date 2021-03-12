@@ -14,6 +14,8 @@
                 <% if user_signed_in? %>
                     <%= link_to raw("<i class='fa fa-user-circle'></i> Profile"), user_path(current_user.id), class: "dropdown-item"%>
                     <div class="dropdown-divider"></div>
+                    <%= link_to raw("<i class='fa fa-tachometer-alt'></i> Host Dashboard"), dashboard_index_url, class: "dropdown-item"%>
+                    <div class="dropdown-divider"></div>
                     <%= link_to raw("<i class='fa fa-sign-out-alt'></i> Logout"), destroy_user_session_path, class: "dropdown-item", method: :delete %>
                 <% else %>
                     <%= link_to raw("<i class='fa fa-sign-in-alt'></i> Login"), new_user_session_path, class: "dropdown-item" %>
@@ -24,13 +26,14 @@
         </div>
     </div>
     </nav>
-
-
-    <nav class="navbar navigationItems justify-content-between">
-        <%= link_to raw(" Home"), root_url, class: "nav-item nav-link text-dark headerItem" %>
-        <a class="nav-item nav-link text-dark headerItem" href="#">Booking a Home</a>
-        <a class="nav-item nav-link text-dark headerItem" href="#">Host your Home</a>
-        <a class="nav-item nav-link text-dark headerItem" href="#">About Us</a>
-        <a class="nav-item nav-link text-dark headerItem" href="#">Contact Us</a>
-    </nav>
+    
+    <% if yield(:title) != "Host Dashboard"%>
+        <nav class="navbar navigationItems justify-content-between">
+            <%= link_to raw(" Home"), root_url, class: "nav-item nav-link text-dark headerItem" %>
+            <a class="nav-item nav-link text-dark headerItem" href="#">Booking a Home</a>
+            <a class="nav-item nav-link text-dark headerItem" href="#">Host your Home</a>
+            <a class="nav-item nav-link text-dark headerItem" href="#">About Us</a>
+            <a class="nav-item nav-link text-dark headerItem" href="#">Contact Us</a>
+        </nav>
+    <% end %>
 </div>
