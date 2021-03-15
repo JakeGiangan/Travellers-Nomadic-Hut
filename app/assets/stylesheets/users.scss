@@ -1,9 +1,19 @@
-.hostHeadingHeader {
-  /* The image used */
-  background-image: url("home/host_heading.jpg");
+.signupHeadingBG {
+  background-image: url("home/signup_heading.jpg");
   height: 400px;
-  background-size: cover;
+  background-attachment: fixed;
   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.loginHeadingBG {
+  background-image: url("home/login_heading.jpg");
+  height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .hostHeadingCaption {
@@ -14,4 +24,8 @@
 
 .fieldRowSpace {
   margin-top: 25px;
+}
+
+.fieldItemWidth {
+  min-width: 300px;
 }

@@ -7,7 +7,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :languages
       t.integer :contact_number
       t.string :profile_photo
-      t.integer :account_type
 
       t.timestamps
     end

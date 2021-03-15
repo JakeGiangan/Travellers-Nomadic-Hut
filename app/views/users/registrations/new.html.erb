@@ -1,57 +1,56 @@
-<% provide(:title, "Sign up as a host") %>
+<% provide(:title, "Sign up") %>
 <div>
-	<div class="hostHeadingHeader">
-		<h1 class="text-white hostHeadingCaption">Sign up and start Hosting Today<br /></h1>
-	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<h1 style="margin-top: 40px;">Host Information</h1>
-				<hr />
-			</div>
-		</div>
+    <div class="signupHeadingBG">
+        <h1 class="text-white hostHeadingCaption">Sign up and start Hosting Today<br /> or find your well deserved staycation</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 style="margin-top: 40px;">Sign up Information</h1>
+                <hr />
+            </div>
+        </div>
 
-		<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-			<div class="row fieldRowSpace" >
-				<div class="col">
-					<%= f.text_field :first_name, class: "roundedFormField" ,placeholder: "First Name", style: "min-width: 300px" %>
-				</div>
-				<div class="col">
-					<%= f.text_field :last_name, class: "roundedFormField" ,placeholder: "Last Name", style: "min-width: 300px" %>
-				</div>
-				<div class="col">
-					<%= f.date_field :birthdate, class: "roundedFormField", style: "min-width: 300px" %>
-				</div>
-			</div>
-			<div class="row fieldRowSpace" >
-				<div class="col">
-					<%= f.text_field :languages, class: "roundedFormField" ,placeholder: "Spoken Languages", style: "min-width: 300px" %>
-				</div>
-				<div class="col">
-					<%= f.email_field :email, class: "roundedFormField" ,placeholder: "Email Address", style: "min-width: 300px" %>
-				</div>
-				<div class="col">
-					<%= f.number_field :contact_number, class: "roundedFormField" ,placeholder: "Contact Number", style: "min-width: 300px" %>
-				</div>
-				</div>
-				<div class="row fieldRowSpace" >
-				<div class="col">
-					<%= f.password_field :password, class: "roundedFormField" ,placeholder: "Password", style: "min-width: 300px" %>
-				</div>
-				<div class="col">
-					<%= f.password_field :password_confirmation, class: "roundedFormField" ,placeholder: "Password", style: "min-width: 300px" %>
-				</div>
-				<div class="col">
-					<input type="text" disabled placeholder="upload photo here" style="width: 300px;" />
-					<%= f.hidden_field :account_type, value: 1 %>
-				</div>
-			</div>
-			<div class="row fieldRowSpace" style="margin-bottom: 100px">
-				<div class="col d-xl-flex justify-content-xl-center">
-					<%= f.submit "Sign up", class: "btn btn-outline-success roundedButton", style: "margin-right: 20px;" %>
-					<%= link_to "Cancel", root_url,class: "btn btn-outline-danger roundedButton", style: "margin-left: 20px;" %>
-				</div>
-			</div>
-		<% end %>
-	</div>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <div class="row fieldRowSpace" >
+                <div class="col">
+                    <%= f.text_field :first_name, required: 'required', class: "roundedFormField fieldItemWidth" ,placeholder: "First Name" %>
+                </div>
+                <div class="col">
+                    <%= f.text_field :last_name, required: 'required', class: "roundedFormField fieldItemWidth" ,placeholder: "Last Name" %>
+                </div>
+                <div class="col">
+                    <%= f.date_field :birthdate, required: 'required', class: "roundedFormField fieldItemWidth" %>
+                </div>
+            </div>
+            <div class="row fieldRowSpace" >
+                <div class="col">
+                    <%= f.text_field :languages, required: 'required', class: "roundedFormField fieldItemWidth" ,placeholder: "Spoken Languages" %>
+                </div>
+                <div class="col">
+                    <%= f.email_field :email, required: 'required', class: "roundedFormField fieldItemWidth" ,placeholder: "Email Address" %>
+                </div>
+                <div class="col">
+                    <%= f.number_field :contact_number, required: 'required', class: "roundedFormField fieldItemWidth" ,placeholder: "Contact Number" %>
+                </div>
+            </div>
+            <div class="row fieldRowSpace" >
+                <div class="col">
+                    <%= f.password_field :password, required: 'required', class: "roundedFormField fieldItemWidth" ,placeholder: "Password" %>
+                </div>
+                <div class="col">
+                    <%= f.password_field :password_confirmation, required: 'required', class: "roundedFormField fieldItemWidth" ,placeholder: "Password" %>
+                </div>
+                <div class="col">
+                    <input type="text" class="roundedFormField fieldItemWidth" disabled placeholder="upload photo here"  />
+                </div>
+            </div>
+            <div class="row fieldRowSpace" style="margin-bottom: 100px">
+                <div class="col d-xl-flex justify-content-xl-center">
+                    <%= f.submit "Sign up", class: "btn btn-outline-success roundedButton", style: "margin-right: 20px;" %>
+                    <%= link_to "Cancel", root_url,class: "btn btn-outline-danger roundedButton", style: "margin-left: 20px;" %>
+                </div>
+            </div>
+        <% end %>
+    </div>
 </div>
