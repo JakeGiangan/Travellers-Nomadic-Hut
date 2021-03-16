@@ -1,0 +1,31 @@
+.signupHeadingBG {
+  background-image: url("home/signup_heading.jpg");
+  height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.loginHeadingBG {
+  background-image: url("home/login_heading.jpg");
+  height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hostHeadingCaption {
+  margin-left: 450px;
+  padding-top: 277px;
+  font-family: "Montserrat";
+}
+
+.fieldRowSpace {
+  margin-top: 25px;
+}
+
+.fieldItemWidth {
+  min-width: 300px;
+}
