@@ -14,6 +14,8 @@
                 <% if user_signed_in? %>
                     <%= link_to raw("<i class='fa fa-user-circle'></i> Profile"), user_path(current_user.id), class: "dropdown-item"%>
                     <div class="dropdown-divider"></div>
+                    <%= link_to raw("<i class='fa fa-tachometer-alt'></i> Hosting Dashboard"), hosting_dashboard_url, class: "dropdown-item"%>
+                    <div class="dropdown-divider"></div>
                     <%= link_to raw("<i class='fa fa-sign-out-alt'></i> Logout"), destroy_user_session_path, class: "dropdown-item", method: :delete %>
                 <% else %>
                     <%= link_to raw("<i class='fa fa-sign-in-alt'></i> Login"), new_user_session_path, class: "dropdown-item" %>
@@ -24,8 +26,7 @@
         </div>
     </div>
     </nav>
-
-
+    
     <nav class="navbar navigationItems justify-content-between">
         <%= link_to raw(" Home"), root_url, class: "nav-item nav-link text-dark headerItem" %>
         <a class="nav-item nav-link text-dark headerItem" href="#">Booking a Home</a>

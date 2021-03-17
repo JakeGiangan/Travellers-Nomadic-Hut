@@ -1,0 +1,22 @@
+// Place all the styles related to the dashboard controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.navItems {
+    background-color: #F0EFEB;
+    margin-bottom: 20px;
+}
+
+.navItems:hover {
+    background-color: #16f063;
+    color: white;
+}
+
+.navItems:active{
+    background-color: #16f063;
+    color: white;
+}
+
+.cardFormat {
+    background-color: #16f063;
+}
