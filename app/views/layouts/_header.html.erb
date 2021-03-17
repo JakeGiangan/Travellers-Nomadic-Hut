@@ -14,7 +14,7 @@
                 <% if user_signed_in? %>
                     <%= link_to raw("<i class='fa fa-user-circle'></i> Profile"), user_path(current_user.id), class: "dropdown-item"%>
                     <div class="dropdown-divider"></div>
-                    <%= link_to raw("<i class='fa fa-tachometer-alt'></i> Hosting Dashboard"), dashboard_index_url, class: "dropdown-item"%>
+                    <%= link_to raw("<i class='fa fa-tachometer-alt'></i> Hosting Dashboard"), hosting_dashboard_url, class: "dropdown-item"%>
                     <div class="dropdown-divider"></div>
                     <%= link_to raw("<i class='fa fa-sign-out-alt'></i> Logout"), destroy_user_session_path, class: "dropdown-item", method: :delete %>
                 <% else %>
