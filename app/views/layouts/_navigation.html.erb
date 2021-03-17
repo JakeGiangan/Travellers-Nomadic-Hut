@@ -1,7 +1,12 @@
 <div class="col-xl-3">
     <div class="row">
         <div class="col navItems">
-            <h3 class="text-center">Properties</h3>
+            <%= link_to raw("<h3 class='text-center linkItem'>Dashboard</h3>"), hosting_dashboard_url, class: "linkItem" %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col navItems">
+            <%= link_to raw("<h3 class='text-center linkItem'>Properties</h3>"), properties_path, class: "linkItem" %>
         </div>
     </div>
     <div class="row">

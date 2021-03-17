@@ -1,0 +1,210 @@
+<div role="tabpanel" class="tab-pane fade show active" id="tab-1">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <h3>Description</h3>
+                    <hr />
+                    <p class="MontserratFont">
+                    <em> <strong> Property Type: </strong> </em>
+                    <%= 
+                    case @property.property_type
+                        when 1
+                            "Condominium"
+                        when 2
+                            "Resort"
+                        when 3
+                            "Hotel"
+                        when 4
+                            "Beach House"
+                        when 5
+                            "Apartment"
+                        when 6
+                            "Capsule Room"
+                        else
+                            "Others"
+                    end
+                    %> </p>
+                    <p class="MontserratFont"> <%= @property.property_description%> </p>                    
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <div class="col">
+                    <h3>Facilities & Amenities</h3>
+                    <hr />
+                    <div class="row MontserratFont">
+                        <% if @property.wifi %>
+                            <div class="border rounded border-dark amenitiesIcons">
+                                <i class="fa fa-wifi d-xl-flex justify-content-xl-center fa-3x" style="color: rgb(0,0,0);margin-top: 10px;"></i>
+                                <p class="text-center">Has Wifi Connection</p>
+                            </div>
+                        <% end %>
+                        <% if @property.swimming_pool %>
+                            <div class="border rounded border-dark amenitiesIcons">
+                                <i class="fa fa-swimming-pool d-xl-flex justify-content-xl-center fa-3x" style="color: rgb(0,0,0);margin-top: 10px;"></i>
+                                <p class="text-center">Swimming Pool</p>
+                            </div>
+                        <% end %>
+                        <% if @property.parking %>
+                            <div class="border rounded border-dark amenitiesIcons">
+                                <i class="fa fa-parking d-xl-flex justify-content-xl-center fa-3x" style="color: rgb(0,0,0);margin-top: 10px;"></i>
+                                <p class="text-center">Parking</p>
+                            </div>
+                        <% end %>
+                        <% if @property.restaurant %>
+                            <div class="border rounded border-dark amenitiesIcons">
+                                <i class="fa fa-utensils d-xl-flex justify-content-xl-center fa-3x" style="color: rgb(0,0,0);margin-top: 10px;"></i>
+                                <p class="text-center">Restaurant</p>
+                            </div>
+                        <% end %>
+                        <% if @property.twenty_four_hour_front_desk %>
+                            <div class="border rounded border-dark amenitiesIcons">
+                                <i class="fa fa-concierge-bell d-xl-flex justify-content-xl-center fa-3x" style="color: rgb(0,0,0);margin-top: 10px;"></i>
+                                <p class="text-center">24-Hour Front Desk</p>
+                            </div>
+                        <% end %>
+                        <% if @property.fitness_center %>
+                            <div class="border rounded border-dark amenitiesIcons">
+                                <i class="fa fa-dumbbell d-xl-flex justify-content-xl-center fa-3x" style="color: rgb(0,0,0);margin-top: 10px;"></i>
+                                <p class="text-center">Fitness Center</p>
+                            </div>
+                        <% end %>
+                        <% if @property.airport_transfer %>
+                            <div class="border rounded border-dark amenitiesIcons">
+                                <i class="fa fa-plane d-xl-flex justify-content-xl-center fa-3x" style="color: rgb(0,0,0);margin-top: 10px;"></i>
+                                <p class="text-center">Airport Transfer</p>
+                            </div>
+                        <% end %>
+                        <% if @property.pay_upon_checkin %>
+                            <div class="border rounded border-dark amenitiesIcons">
+                                <i class="fa fa-money-bill d-xl-flex justify-content-xl-center fa-3x" style="color: rgb(0,0,0);margin-top: 10px;"></i>
+                                <p class="text-center">Pay Upon Checking</p>
+                            </div>
+                        <% end %>
+                        <% if @property.family_friendly %>
+                            <div class="border rounded border-dark amenitiesIcons">
+                                <i class="fa fa-child d-xl-flex justify-content-xl-center fa-3x" style="color: rgb(0,0,0);margin-top: 10px;"></i>
+                                <p class="text-center">Family Friendly</p>
+                            </div>
+                        <% end %>
+                        <% if @property.near_mrt_station %>
+                            <div class="border rounded border-dark amenitiesIcons">
+                                <i class="fa fa-subway d-xl-flex justify-content-xl-center fa-3x" style="color: rgb(0,0,0);margin-top: 10px;"></i>
+                                <p class="text-center">Near MRT Stations</p>
+                            </div>
+                        <% end %>
+                        <% if @property.no_cancellation_fee %>
+                            <div class="border rounded border-dark amenitiesIcons">
+                                <i class="fa fa-hand-holding-usd d-xl-flex justify-content-xl-center fa-3x" style="color: rgb(0,0,0);margin-top: 10px;"></i>
+                                <p class="text-center" style="font-size: 14px">No Cancellation Fees</p>
+                            </div>
+                        <% end %>
+                        <% if @property.cancellation_fee %>
+                            <div class="border rounded border-dark amenitiesIcons">
+                                <i class="fa fa-hand-holding-usd d-xl-flex justify-content-xl-center fa-3x" style="color: rgb(0,0,0);margin-top: 10px;"></i>
+                                <p class="text-center">Cancellation Fees</p>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="border rounded border-success" style="width: 550px;height: 590px;margin-top: 25px;">
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-xl-3">
+                                <h2 class="MontserratFont" style="margin-top: 45px;margin-left: 38px;">$<%= @property.rates%></h2>
+                            </div>
+                            <div class="col-xl-9">
+                                <p style="margin-top: 59px;">/night</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col"><input type="date" style="margin-right: 30px;margin-left: 30px;" /></div>
+                    <div class="col"><input type="date" style="margin-right: 30px;margin-left: 30px;" /></div>
+                </div>
+                <hr style="width: 485px;" />
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col">
+                        <h4 class="text-left d-xl-flex justify-content-xl-center">Guests</h4>
+                    </div>
+                    <div class="col"><input type="number" /></div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="text-left MontserratFont d-xl-flex justify-content-xl-center"><%= @property.capacity %> guests maximum. Infants don’t count to<br />number of guests<br /></p>
+                    </div>
+                </div>
+                <hr style="width: 485px;" />
+                <div class="row MontserratFont">
+                    <div class="col">
+                        <p class="text-center">$<%= @property.rates %> x 2 nights</p>
+                    </div>
+                    <div class="col">
+                        <p class="text-center">$total price</p>
+                    </div>
+                </div>
+                <div class="row MontserratFont">
+                    <div class="col">
+                        <p class="text-center">Cleaning Fee</p>
+                    </div>
+                    <div class="col">
+                        <p class="text-center">$<%= @property.cleaning_fee %></p>
+                    </div>
+                </div>
+                <div class="row MontserratFont">
+                    <div class="col">
+                        <p class="text-center">Service Fee</p>
+                    </div>
+                    <div class="col">
+                        <p class="text-center">$<%= @property.service_fee %></p>
+                    </div>
+                </div>
+                <hr style="width: 485px;" />
+                <div class="row">
+                    <div class="col">
+                        <h4 class="text-center">TOTAL</h4>
+                    </div>
+                    <div class="col">
+                        <p class="text-center MontserratFont">$total price</p>
+                    </div>
+                </div>
+                <div class="row text-center d-xl-flex justify-content-xl-center">
+                    <div class="col text-center d-xl-flex justify-content-xl-center"><button class="btn btn-success d-xl-flex roundedButton" type="button" >RESERVE</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 20px;margin-bottom: 130px;">
+        <div class="col">
+            <h3>Things To Know</h3>
+            <hr />
+            <div class="row">
+                <div class="col">
+                    <h4>House Rules</h4>
+                    <ul class="removeBullets">
+                        <li><i class="fa fa-clock"></i> Check in time: <%= @property.check_in_time > 12 ? "#{@property.check_in_time-12} pm" : "#{@property.check_in_time} am" %></li>
+                        <li><i class="fa fa-clock"></i> Check out time: <%= @property.check_out_time > 12 ? "#{@property.check_out_time-12} pm" : "#{@property.check_out_time} am" %></li>
+                        <li><%= @property.family_friendly ? raw("<i class='fa fa-child'></i> Family Friendly") : raw("<i class='fa fa-window-close'></i> Not suitable for childrent &amp; infants") %></li>
+                        <li><%= @property.no_parties ? raw("<i class='fa fa-window-close'></i> No Parties") : raw("<i class='fa fa-glass-cheers'></i> Parties Allowed") %></li>
+                    </ul><button class="btn btn-outline-success" type="button">Show All</button></div>
+                <div class="col">
+                    <h4>Health &amp; Safety</h4>
+                    <ul class="removeBullets">
+                        <li>Smoke Alarm</li>
+                        <li>CCTV&#39;s Equipped</li>
+                        <li>Security Guards</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h4>Cancellation Policy</h4>
+                    <p>Non-refundable: Cancel before check-in<br />and get back only the cleaning fee, if you paid one.<br /><button class="btn btn-outline-success" type="button">More Details</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

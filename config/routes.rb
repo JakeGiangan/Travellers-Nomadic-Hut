@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get '/hosting-dashboard', to: 'dashboard#dashboard'
   root 'static_pages#home'
   resources :users
+  resources :properties
 end
