@@ -1,4 +1,4 @@
-<% provide(:title, "Properties List") %>
+<% provide(:title, "Your Listings") %>
 <div class="container" style="margin-top: 100px">
     <div class="row" style="margin-top: 50px">
         <%= render 'layouts/navigation' %>
@@ -6,11 +6,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <h1>Properties</h1>
+                        <h1>Your Listings</h1>
                     </div>
                     <div >
                         <%= render 'new' %>
-                        <button class="btn btn-outline-success d--flex justify-content-end roundedButton" type="button" data-toggle="modal" data-target="#newHouseModal" >Add a new Property &nbsp;<i class="fa fa-plus"></i></button>
+                        <button class="btn btn-outline-success d--flex justify-content-end roundedButton" type="button" data-toggle="modal" data-target="#newListingModal" >Add a new Listing &nbsp;<i class="fa fa-plus"></i></button>
                     </div>
                 </div>
                 <div class="row">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="row" style="margin-top: 20px;">
-                <% @propertiesList.each do |propertyItem| %>
+                <% @listingList.each do |listingItem| %>
                     <div class="col-4">
                         <div>
                             <div class="row">
@@ -29,12 +29,12 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="text-center"><%= propertyItem.property_name %></h5>
+                                    <h5 class="text-center"><%= listingItem.listing_name %></h5>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <%= link_to raw("View Details"), propertyItem, class: "btn btn-outline-success d-xl-flex justify-content-xl-center" %>
+                                    <%= link_to raw("View Details"), listingItem, class: "btn btn-outline-success d-xl-flex justify-content-xl-center" %>
                                 </div>
                             </div>
                         </div>
@@ -44,15 +44,7 @@
                 <div class="row" style="margin-top: 21px;">
                     <div class="col">
                         <nav class="d-xl-flex justify-content-xl-center">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                            </ul>
+                            <%= will_paginate @listingList %>
                         </nav>
                     </div>
                 </div>

@@ -5,6 +5,16 @@
 .navItems {
     background-color: #F0EFEB;
     margin-bottom: 20px;
+    color: black;
+}
+
+.navItems>a {
+    color: black;
+}
+
+.navItems>a:hover {
+    text-decoration: none;
+    color: white;
 }
 
 .navItems:hover {
