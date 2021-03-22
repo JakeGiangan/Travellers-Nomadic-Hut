@@ -15,22 +15,20 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     if @listing .save
       flash[:notice] = 'Listing added successfully'
-      redirect_to listings_url
     else
       flash[:alert] = 'Failed to add Listing'
-      redirect_to listings_url
-    end
+    end    
+    redirect_to listings_url
   end
 
   def update
     @listing = Listing.find(params[:id])
     if @listing.update_attributes(listing_params)
       flash[:notice] = 'Updated Listing Details!'
-      redirect_to @listing 
     else
       flash[:alert] = 'Update Failed!'
-      redirect_to @listing 
     end
+    redirect_to @listing 
   end
 
   def destroy
