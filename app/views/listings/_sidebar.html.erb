@@ -1,0 +1,61 @@
+<div class="col-xl-4">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="row">
+            <div class="col-xl-10">
+                <%= link_to raw("<span>Room</span>"), room_listing_url(@listing) %>
+            </div>
+                <div class="col-xl-2"><i class="fa fa-check text-success"></i></div>
+            </div>
+        </li>
+        <li class='list-group-item'>
+            <div class='row'>
+                <div class='col-xl-10'>
+                    <%= link_to raw("<span>Price</span>"), price_listing_url(@listing) %>
+                </div>
+                <div class='col-xl-2'><%= is_filled?(@listing.price) %></div>
+            </div>
+        </li>
+        <li class='list-group-item'>
+            <div class='row'>
+                <div class='col-xl-10'>
+                    <%= link_to raw("<span>Description</span>"), description_listing_url(@listing)%>
+                </div>
+                <div class='col-xl-2'><%= is_filled?(@listing.listing_description) %></div>
+            </div>
+        </li>
+        <li class='list-group-item'>
+            <div class='row'>
+                <div class='col-xl-10'>
+                    <%= link_to raw("<span>Photos</span>"), photos_listing_url(@listing)%>
+                </div>
+                <div class='col-xl-2'><i class='fa fa-check'></i></div>
+            </div>
+        </li>
+        <li class='list-group-item'>
+            <div class='row'>
+                <div class='col-xl-10'>
+                    <%= link_to raw("<span>Amenities</span>"), amenity_listing_url(@listing)%>
+                    </div>
+                <div class='col-xl-2'><i class='fa fa-check text-success'></i></div>
+            </div>
+        </li>
+        <li class='list-group-item'>
+            <div class='row'>
+                <div class='col-xl-10'>
+                    <%= link_to raw("<span>Location</span>"), location_listing_url(@listing)%>
+                </div>
+                <div class='col-xl-2'><%= is_filled?(@listing.address) %></div>
+            </div>
+        </li>
+        <li class="list-group-item">
+        <%= form_for(@listing) do |f| %>
+            <%= f.hidden_field :is_active, value: true %>
+            <%= f.submit "Publish", disabled: !is_ready_to_publish(@listing), class: "btn btn-block btn-success col-lg-12"%>
+        <% end %>
+        </li>
+        <li class='list-group-item'>
+            <%= link_to raw("<i class='fa fa-eye'></i>&nbsp;View Listing"), @listing , class: "btn btn-info col-lg-12"%>
+        </li>
+    </ul>
+</div>

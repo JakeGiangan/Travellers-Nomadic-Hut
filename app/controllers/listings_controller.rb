@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-    before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @listing = Listing.new
@@ -15,20 +15,46 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     if @listing .save
       flash[:notice] = 'Listing added successfully'
+      redirect_to room_listing_url(@listing)
     else
       flash[:alert] = 'Failed to add Listing'
-    end    
-    redirect_to listings_url
+      redirect_to listings_url
+    end
+  end
+
+  def room
+    @listing = Listing.find(params[:id])
+  end
+
+  def price
+    @listing = Listing.find(params[:id])
+  end
+
+  def description
+    @listing = Listing.find(params[:id])
+  end
+
+  def photos
+    @listing = Listing.find(params[:id])
+  end
+
+  def amenity
+    @listing = Listing.find(params[:id])
+  end
+
+  def location
+    @listing = Listing.find(params[:id])
   end
 
   def update
     @listing = Listing.find(params[:id])
-    if @listing.update_attributes(listing_params)
+    @finalData = is_ready_to_publish(@listing) ? listing_params.merge(is_active: true) : listing_params
+    if @listing.update_attributes(@finalData)
       flash[:notice] = 'Updated Listing Details!'
     else
       flash[:alert] = 'Update Failed!'
     end
-    redirect_to @listing 
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
@@ -56,5 +82,8 @@ class ListingsController < ApplicationController
       :has_air_conditioning,
       :address,
     )
+  end
+  def is_ready_to_publish(listing)
+    listing.address.present? && listing.listing_description.present? && listing.listing_name.present? && listing.price.present?
   end
 end

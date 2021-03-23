@@ -56,68 +56,6 @@
                             "), {}, style: "width: 330px", class: "roundedFormField" %>
                         </div>
                     </div>
-                    <div class="row" style="margin-top: 20px;">
-                        <div class="col">
-                            <%= f.text_area :listing_description, class: "roundedFormField" ,placeholder: "Property Description", required: true, style: "min-width: 1073px; height: 150px" %>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 20px;">
-                        <div class="col-lg-12">
-                            <%= f.number_field :price, required: 'required', class: "roundedFormField col-lg-12" ,placeholder: "Price Per Night" %>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 20px;">
-                        <div class="col">
-                            <h3>Facilities &amp; Amenities</h3>
-                            <hr />
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-check">
-                                        <%= f.check_box :has_internet, class: "form-check-input" %>
-                                        <label class="form-check-label" for="formCheck-1">WiFi & Internet Connection</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <%= f.check_box :has_tv, class: "form-check-input" %>
-                                        <label class="form-check-label" for="formCheck-2">TV</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <%= f.check_box :has_kitchen, class: "form-check-input" %>
-                                        <label class="form-check-label" for="formCheck-3">Kitchen</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <%= f.check_box :has_heating, class: "form-check-input" %>
-                                        <label class="form-check-label" for="formCheck-4">Heating</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <%= f.check_box :has_air_conditioning, class: "form-check-input" %>
-                                        <label class="form-check-label" for="formCheck-1">Air conditioner</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="row" style="margin-top: 20px;">
-                        <div class="col">
-                            <h3>Location</h3>
-                            <hr />
-                            <div class="row">
-                                <div class="col">
-                                <%= f.text_field :address, class: "col-lg-12 roundedFormField", required: true ,placeholder: "Location" %>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 20px;">
-                        <div class="col">
-                            <h3>Images</h3>
-                            <hr />
-                            <div class="row">
-                                <div class="col">
-                                    <input type="file" multiple accept="image/*" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="modal-footer">

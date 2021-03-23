@@ -1,0 +1,27 @@
+<% provide(:title, "Listing Description") %>
+<div class="container" style="margin-top: 100px;">
+    <div class="row">
+        <%= render'sidebar' %>
+        <div class="col-xl-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Description</h5>
+                </div>
+                <div class="card-body">
+                <%= form_for(@listing) do |f| %>
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col">
+                            <%= f.text_area :listing_description, class: "roundedFormField col-lg-12" ,placeholder: "Property Description", required: true %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <%= f.submit "Save", class: "btn btn-primary col-lg-12 roundedButton" %>
+                        </div>
+                    </div>
+                <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
