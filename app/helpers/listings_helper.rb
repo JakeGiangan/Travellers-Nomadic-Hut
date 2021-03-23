@@ -1,4 +1,4 @@
-module ListingHelper
+module ListingsHelper
   def is_ready_to_publish(listing)
     listing.address.present? && listing.listing_description.present? && listing.listing_name.present? && listing.price.present?
   end

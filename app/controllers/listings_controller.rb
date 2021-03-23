@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :fetch_listing, except: [:new, :create, :index]
 
   def index
     @listing = Listing.new
@@ -23,27 +24,22 @@ class ListingsController < ApplicationController
   end
 
   def room
-    @listing = Listing.find(params[:id])
+    
   end
 
   def price
-    @listing = Listing.find(params[:id])
   end
 
   def description
-    @listing = Listing.find(params[:id])
   end
 
   def photos
-    @listing = Listing.find(params[:id])
   end
 
   def amenity
-    @listing = Listing.find(params[:id])
   end
 
   def location
-    @listing = Listing.find(params[:id])
   end
 
   def update
@@ -83,7 +79,8 @@ class ListingsController < ApplicationController
       :address,
     )
   end
-  def is_ready_to_publish(listing)
-    listing.address.present? && listing.listing_description.present? && listing.listing_name.present? && listing.price.present?
+
+  def fetch_listing
+    @listing = Listing.find(params[:id])
   end
 end

@@ -13,47 +13,47 @@
                             <%= f.text_field :listing_name, required: 'required', class: "roundedFormField col-lg-12" ,placeholder: "Property Name" %>
                         </div>
                         <div class="col-lg-4">
-                            <%= f.select :home_type, raw("
-                            <option value='Condominium' selected>Condominium</option>
-                            <option value='Resort'>Resort</option>
-                            <option value='Hotel'>Hotel</option>
-                            <option value='Beach House'>Beach House</option>
-                            <option value='Apartment'>Apartment</option>
-                            <option value='Capsule Room'>Capsule Room</option>
-                            "), {}, style: "width: 330px", class: "roundedFormField" %>
+                            <%= f.select :home_type, options_for_select([
+                                ["Condominium"],
+                                ["Resort"],
+                                ["Hotel"],
+                                ["Beach House"], 
+                                ["Apartment"],
+                                ["Capsule Room"]
+                            ]), {}, class: "roundedFormField col-lg-12" %>
                         </div>
                         <div class="col-lg-4">
-                            <%= f.select :room_type, raw("
-                            <option value='Entire' selected>Entire</option>
-                            <option value='Private'>Private</option>
-                            <option value='Shared'>Shared</option>
-                            "), {}, style: "width: 330px", class: "roundedFormField" %>
+                            <%= f.select :room_type, options_for_select([
+                                ["Entire"],
+                                ["Private"],
+                                ["Shared"]
+                            ]), {}, class: "roundedFormField col-lg-12" %>
                         </div>
                     </div>
                     <div class="row" style="margin-top: 20px;">
                         <div class="col-lg-4">
-                            <%= f.select :accomodate, raw("
-                            <option value='1 ' selected>1 Guest</option>
-                            <option value='2'>2 Guests</option>
-                            <option value='3'>3 Guests</option>
-                            <option value='4'>4+ Guests</option>
-                            "), {}, style: "width: 330px", class: "roundedFormField" %>
+                            <%= f.select :accomodate, options_for_select([
+                                ["1 Guest", 1],
+                                ["2 Guests", 2],
+                                ["3 Guests", 3],
+                                ["4+ Guests", 4]
+                            ]), {}, class: "roundedFormField col-lg-12" %>
                         </div>
                         <div class="col-lg-4">
-                             <%= f.select :bedroom_count, raw("
-                            <option value='1' selected>1 Bedroom</option>
-                            <option value='2'>2 Bedrooms</option>
-                            <option value='3'>3 Bedrooms</option>
-                            <option value='4'>4+ Bedrooms</option>
-                            "), {}, style: "width: 330px", class: "roundedFormField" %>
+                            <%= f.select :bedroom_count, options_for_select([
+                                ["1 Bedroom", 1],
+                                ["2 Bedrooms", 2],
+                                ["3 Bedrooms", 3],
+                                ["4+ Bedrooms", 4]
+                            ]), {},  class: "roundedFormField col-lg-12" %>
                         </div>
                         <div class="col-lg-4">
-                             <%= f.select :bathroom_count, raw("
-                            <option value='1' selected>1 Bathroom</option>
-                            <option value='2'>2 Bathrooms</option>
-                            <option value='3'>3 Bathrooms</option>
-                            <option value='4'>4+ Bathrooms</option>
-                            "), {}, style: "width: 330px", class: "roundedFormField" %>
+                             <%= f.select :bathroom_count, options_for_select([
+                                ["1 Bathroom", 1],
+                                ["2 Bathrooms", 2],
+                                ["3 Bathrooms", 3],
+                                ["4+ Bathrooms", 4]
+                            ]), {},  class: "roundedFormField col-lg-12" %>
                         </div>
                     </div>
                 </div>

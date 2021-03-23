@@ -10,7 +10,6 @@
         <div class="col-xl-3">
             <div class="row" style="margin-top: 22px;">
                 <div class="col">
-                <%= render 'edit' %>
                 <%= link_to raw("<i class='fa fa-pen'></i> Edit"), room_listing_path(@listing), class: "btn btn-outline-info roundedButton", style: "margin-right: 15px; margin-left: 50px"  %>
                 <%= link_to raw("<i class='fa fa-trash'></i> Delete"), listings_path(@listing), class: "btn btn-outline-danger roundedButton", method: :delete, data: { confirm: "You sure?" },  style:"margin-left: 15px " %>
                 </div>

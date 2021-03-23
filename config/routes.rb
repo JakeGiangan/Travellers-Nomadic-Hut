@@ -17,8 +17,6 @@ Rails.application.routes.draw do
       get 'photos'
       get 'amenity'
       get 'location'
-      get 'preload'
-      get 'preview'
     end
   end
 end

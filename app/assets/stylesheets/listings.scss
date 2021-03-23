@@ -27,12 +27,13 @@ ul.removeBullets {
 /* active (faded) */
 .nav-pills > li > a.active {
   background-color: #16f063 !important;
-  color: black !important;
+  color: white !important;
   border-radius: 50px;
 }
 
 .nav-pills > li > a:hover,
 .nav-pills > li > a:focus {
-  background-color: #16f063 !important;
-  color: black !important;
+  background-color: #16ce56 !important;
+  color: white !important;
+  border-radius: 50px;
 }

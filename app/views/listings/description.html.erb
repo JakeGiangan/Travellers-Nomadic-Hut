@@ -5,10 +5,15 @@
         <div class="col-xl-8">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="mb-0">Description</h5>
+                    <h5 class="mb-0">Listing Name & Description</h5>
                 </div>
                 <div class="card-body">
                 <%= form_for(@listing) do |f| %>
+                    <div class="row" style="margin-bottom: 20px">
+                        <div class="col">
+                            <%= f.text_field :listing_name, required: 'required', class: "roundedFormField col-lg-12" ,placeholder: "Property Name" %>
+                        </div>
+                    </div>
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col">
                             <%= f.text_area :listing_description, class: "roundedFormField col-lg-12" ,placeholder: "Property Description", required: true %>

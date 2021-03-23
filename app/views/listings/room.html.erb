@@ -11,9 +11,6 @@
                 <div class="card-body">
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col">
-                            <%= f.text_field :listing_name, required: 'required', class: "roundedFormField col-lg-12" ,placeholder: "Property Name" %>
-                        </div>
-                        <div class="col">
                             <%= f.select :home_type, options_for_select([
                                 ["Condominium"],
                                 ["Resort"],
