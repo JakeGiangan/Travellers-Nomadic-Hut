@@ -1,9 +1,10 @@
 <div role="tabpanel" class="tab-pane fade show active" id="tab-2">
     <div class="row" style="margin-top: 20px;">
         <div class="col-xl-2 d-xl-flex justify-content-xl-center align-items-xl-center">
-        <i class="fa fa-user-circle fa-4x"></i></div>
+            <%= gravatar_for @host_details, size: 104 %>
+        </div>
         <div class="col-xl-10">
-            <h1>Host Name</h1>
+            <h1><%= @host_details.first_name %> <%= @host_details.last_name %> </h1>
             <hr />
         </div>
     </div>
