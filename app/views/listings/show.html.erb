@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row" style="margin-top: 55px;">
         <div class="col">
-            <p><span style="font-size: 42px;color: #16f063;"><%= @listing.listing_name %></span> <br/> Hosted by <%= @hostDetails.first_name %> <%= @hostDetails.last_name %></p>
+            <p><span style="font-size: 42px;color: #16f063;"><%= @listing.listing_name %></span> <br/> Hosted by <%= @host_details.first_name %> <%= @host_details.last_name %></p>
         </div>
         <% if @listing.user_id == current_user.id %>
         <div class="col-xl-3">
@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col">
             <div>
-            <hr />
+                <hr />
                 <ul class="nav nav-pills d-xl-flex justify-content-xl-center">
                     <li class="nav-item pill-1"><a role="tab" data-toggle="pill" class="nav-link active" href="#tab-1">Details</a></li>
                     <li class="nav-item pill-1"><a role="tab" data-toggle="pill" class="nav-link " href="#tab-2">Host Information</a></li>

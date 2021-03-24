@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="row" style="margin-top: 20px;">
-                <% @listingList.each do |listingItem| %>
+                <% @listing_list.each do |item| %>
                     <div class="col-4">
                         <div>
                             <div class="row">
@@ -29,12 +29,12 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="text-center"><%= listingItem.listing_name %></h5>
+                                    <h5 class="text-center"><%= item.listing_name %></h5>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <%= link_to raw("View Details"), listingItem, class: "btn btn-outline-success d-xl-flex justify-content-xl-center" %>
+                                    <%= link_to raw("View Details"), item, class: "btn btn-outline-success d-xl-flex justify-content-xl-center" %>
                                 </div>
                             </div>
                         </div>

@@ -4,11 +4,11 @@ class ListingsController < ApplicationController
 
   def index
     @listing = Listing.new
-    @listingList = Listing.where(user_id: current_user.id).paginate(page: params[:page], per_page: 3)
+    @listing_list = Listing.where(user_id: current_user.id).paginate(page: params[:page], per_page: 3)
   end
 
   def show
-    @hostDetails = User.find(@listing.user_id)
+    @host_details = User.find(@listing.user_id)
   end
 
   def create
@@ -42,8 +42,8 @@ class ListingsController < ApplicationController
   end
 
   def update
-    @finalData = is_ready_to_publish(@listing) ? listing_params.merge(is_active: true) : listing_params
-    if @listing.update_attributes(@finalData)
+    @final_data = is_ready_to_publish(@listing) ? listing_params.merge(is_active: true) : listing_params
+    if @listing.update_attributes(@final_data)
       flash[:notice] = 'Updated Listing Details!'
     else
       flash[:alert] = 'Update Failed!'
