@@ -1,0 +1,54 @@
+<% provide(:title, "Your Listings") %>
+<div class="container" style="margin-top: 100px">
+    <div class="row" style="margin-top: 50px">
+        <%= render 'layouts/navigation' %>
+        <div class="col" style="margin-bottom: 100px">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>Your Listings</h1>
+                    </div>
+                    <div >
+                        <%= render 'new' %>
+                        <button class="btn btn-outline-success d--flex justify-content-end roundedButton" type="button" data-toggle="modal" data-target="#newListingModal" >Add a new Listing &nbsp;<i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <hr />
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                <% @listing_list.each do |item| %>
+                    <div class="col-4">
+                        <div>
+                            <div class="row">
+                                <div class="col">
+                                    <div style="background-image: url('paul-szewczyk-2Ev0_QHdtRU-unsplash.jpg');width: 350px;height: 180px;background-size: cover;"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="text-center"><%= item.listing_name %></h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <%= link_to raw("View Details"), item, class: "btn btn-outline-success d-xl-flex justify-content-xl-center" %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+                </div>
+                <div class="row" style="margin-top: 21px;">
+                    <div class="col">
+                        <nav class="d-xl-flex justify-content-xl-center">
+                            <%= will_paginate @listing_list %>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
