@@ -59,10 +59,6 @@ class ListingsController < ApplicationController
     redirect_to properties_url
   end
 
-  def delete_image
-    
-  end
-
   private
   def listing_params
     params.require(:listing).permit(
