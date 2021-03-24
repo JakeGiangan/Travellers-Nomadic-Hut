@@ -1,8 +1,18 @@
 <% provide(:title, "#{@listing.listing_name}" ) %>
-<div class="container">
-    <%= image_tag @carousel.first.image, size: "1080x700", style:"background-size: cover;background-position: center;" %>
-</div>
 
+<% if @listing.images.present? %>
+    <div style='background-image: url(<%= url_for(@listing.images.first.image) %>);
+    height: 600px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;'> 
+    </div>
+<% else %>
+    <div> 
+    <h1 class="text-danger d-xl-flex justify-content-xl-center" style="margin-top: 250px;margin-bottom: 150px;"> No Image uploaded! </h1>
+    </div>
+<% end %>
 <div class="container">
     <div class="row" style="margin-top: 55px;">
         <div class="col">

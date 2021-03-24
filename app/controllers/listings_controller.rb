@@ -76,8 +76,7 @@ class ListingsController < ApplicationController
       :has_kitchen,
       :has_heating,
       :has_air_conditioning,
-      :address,
-      images: []
+      :address
     )
   end
 
