@@ -12,46 +12,51 @@
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col">
                             <%= f.select :home_type, options_for_select([
-                                ["Condominium"],
-                                ["Resort"],
-                                ["Hotel"],
-                                ["Beach House"], 
-                                ["Apartment"],
-                                ["Capsule Room"]
-                            ], selected: f.object.home_type), {}, class: "roundedFormField col-lg-12" %>
+                                    ["Condominium"],
+                                    ["Resort"],
+                                    ["Hotel"],
+                                    ["Beach House"], 
+                                    ["Apartment"],
+                                    ["Capsule Room"]
+                                ], selected: f.object.home_type), {}, class: "roundedFormField col-lg-12"
+                            %>
                         </div>
                         <div class="col">
                             <%= f.select :room_type, options_for_select([
-                                ["Entire"],
-                                ["Private"],
-                                ["Shared"]
-                            ], selected: f.object.room_type), {}, class: "roundedFormField col-lg-12" %>
+                                    ["Entire"],
+                                    ["Private"],
+                                    ["Shared"]
+                                ], selected: f.object.room_type), {}, class: "roundedFormField col-lg-12"
+                            %>
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col">
                             <%= f.select :accomodate, options_for_select([
-                            ["1 Guest", 1],
-                            ["2 Guests", 2],
-                            ["3 Guests", 3],
-                            ["4+ Guests", 4]
-                        ], selected: f.object.accomodate), {}, class: "roundedFormField col-lg-12" %>
+                                    ["1 Guest", 1],
+                                    ["2 Guests", 2],
+                                    ["3 Guests", 3],
+                                    ["4+ Guests", 4]
+                                ], selected: f.object.accomodate), {}, class: "roundedFormField col-lg-12"
+                            %>
                         </div>
                         <div class="col">
                             <%= f.select :bedroom_count, options_for_select([
-                            ["1 Bedroom", 1],
-                            ["2 Bedrooms", 2],
-                            ["3 Bedrooms", 3],
-                            ["4+ Bedrooms", 4]
-                        ], selected: f.object.bedroom_count), {},  class: "roundedFormField col-lg-12" %>
+                                    ["1 Bedroom", 1],
+                                    ["2 Bedrooms", 2],
+                                    ["3 Bedrooms", 3],
+                                    ["4+ Bedrooms", 4]
+                                ], selected: f.object.bedroom_count), {},  class: "roundedFormField col-lg-12"
+                            %>
                         </div>
                         <div class="col">
                             <%= f.select :bathroom_count, options_for_select([
-                            ["1 Bathroom", 1],
-                            ["2 Bathrooms", 2],
-                            ["3 Bathrooms", 3],
-                            ["4+ Bathrooms", 4]
-                        ], selected: f.object.bathroom_count), {},  class: "roundedFormField col-lg-12" %>
+                                    ["1 Bathroom", 1],
+                                    ["2 Bathrooms", 2],
+                                    ["3 Bathrooms", 3],
+                                    ["4+ Bathrooms", 4]
+                                ], selected: f.object.bathroom_count), {},  class: "roundedFormField col-lg-12"
+                            %>
                         </div>
                     </div>
                     <div class="row">

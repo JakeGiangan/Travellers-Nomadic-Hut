@@ -25,46 +25,16 @@
                         <div class="border rounded border-dark amenitiesIcons">
                             <i class="fa fa-user d-xl-flex justify-content-xl-center fa-3x" style="color: rgb(0,0,0);margin-top: 10px;"></i>
                             <p class="text-center">
-                            <%= case @listing.accomodate
-                                when 1
-                                    "1 Guest"
-                                when 2
-                                    "2 Guests"
-                                when 3
-                                    "3 Guests"
-                                when 4
-                                    "4+ Guests"
-                                end
-                                %></p>
+                            <%= pluralize(@listing.accomodate, "Guest") %></p>
                         </div>
                         <div class="border rounded border-dark amenitiesIcons">
                             <i class="fa fa-bed d-xl-flex justify-content-xl-center fa-3x" style="color: rgb(0,0,0);margin-top: 10px;"></i>
-                            <p class="text-center"><%= case @listing.bedroom_count
-                                when 1
-                                    "1 Bedroom"
-                                when 2
-                                    "2 Bedrooms"
-                                when 3
-                                    "3 Bedrooms"
-                                when 4
-                                    "4+ Bedrooms"
-                                end
-                                %></p>
+                            <p class="text-center"><%= pluralize(@listing.bedroom_count, "Bedroom") %></p>
                         </div>
                         <div class="border rounded border-dark amenitiesIcons">
                             <i class="fa fa-shower d-xl-flex justify-content-xl-center fa-3x" style="color: rgb(0,0,0);margin-top: 10px;"></i>
                             <p class="text-center">
-                            <%= case @listing.bathroom_count
-                                when 1
-                                    "1 Bathroom"
-                                when 2
-                                    "2 Bathrooms"
-                                when 3
-                                    "3 Bathrooms"
-                                when 4
-                                    "4+ Bathrooms"
-                                end
-                                %>
+                            <%= pluralize(@listing.bathroom_count, "Bathroom") %>
                             </p>
                         </div>
                     </div>

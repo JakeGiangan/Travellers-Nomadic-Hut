@@ -8,19 +8,19 @@
                     <h5 class="mb-0">Location</h5>
                 </div>
                 <%= form_for(@listing) do |f| %>
-                <div class="card-body">
-                    <div class="row" style="margin-bottom: 20px;">
-                        <div class="col">
-                            <%= f.text_field :address, class: "col-lg-12 roundedFormField", required: true ,placeholder: "Location" %>
+                    <div class="card-body">
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col">
+                                <%= f.text_field :address, class: "col-lg-12 roundedFormField", required: true ,placeholder: "Location" %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <%= f.submit "Save", class: "btn btn-primary col-lg-12 roundedButton" %>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <%= f.submit "Save", class: "btn btn-primary col-lg-12 roundedButton" %>
-                        </div>
-                    </div>
-                    <% end %>
-                </div>
+                <% end %>
             </div>
         </div>
     </div>

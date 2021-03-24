@@ -8,7 +8,6 @@ class ListingsController < ApplicationController
   end
 
   def show
-    @listing = Listing.find(params[:id])
     @hostDetails = User.find(@listing.user_id)
   end
 
@@ -43,7 +42,6 @@ class ListingsController < ApplicationController
   end
 
   def update
-    @listing = Listing.find(params[:id])
     @finalData = is_ready_to_publish(@listing) ? listing_params.merge(is_active: true) : listing_params
     if @listing.update_attributes(@finalData)
       flash[:notice] = 'Updated Listing Details!'
