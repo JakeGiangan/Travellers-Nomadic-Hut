@@ -1,10 +1,15 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :fetch_listing, except: [:new, :create, :index]
+  before_action :fetch_listing, except: [:new, :create, :index, :user_listings]
 
-  def index
+  def user_listings
     @listing = Listing.new
     @listing_list = Listing.where(user_id: current_user.id).paginate(page: params[:page], per_page: 3)
+  end
+
+  def index
+    @search = Listing.where(is_active: true).ransack(params[:q])
+    @listing_list = @search.result(distinct: true).paginate(page: params[:page], per_page: 10)
   end
 
   def show
