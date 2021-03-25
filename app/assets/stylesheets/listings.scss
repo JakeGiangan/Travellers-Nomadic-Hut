@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .listingHeaderImage {
-  background-image: url("home/3.jpg"); //will update to first image once upload is implemented
+  background-image: url('<%= image_path(@carousel.first.image) %>'); 
   height: 600px;
   background-attachment: fixed;
   background-position: center;
@@ -35,5 +35,11 @@ ul.removeBullets {
 .nav-pills > li > a:focus {
   background-color: #16ce56 !important;
   color: white !important;
+  border-radius: 50px;
+}
+
+.gallery {
+  width: 100%;
+  height: 800px;
   border-radius: 50px;
 }

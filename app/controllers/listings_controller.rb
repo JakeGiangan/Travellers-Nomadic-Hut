@@ -9,11 +9,12 @@ class ListingsController < ApplicationController
 
   def show
     @host_details = User.find(@listing.user_id)
+    @carousel = @listing.images
   end
 
   def create
     @listing = Listing.new(listing_params)
-    if @listing .save
+    if @listing.save
       flash[:notice] = 'Listing added successfully'
       redirect_to room_listing_url(@listing)
     else
@@ -33,6 +34,7 @@ class ListingsController < ApplicationController
   end
 
   def photos
+    @images = @listing.images
   end
 
   def amenity
@@ -74,7 +76,7 @@ class ListingsController < ApplicationController
       :has_kitchen,
       :has_heating,
       :has_air_conditioning,
-      :address,
+      :address
     )
   end
 

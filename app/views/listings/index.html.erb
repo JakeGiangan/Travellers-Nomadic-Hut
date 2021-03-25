@@ -24,7 +24,11 @@
                         <div>
                             <div class="row">
                                 <div class="col">
-                                    <div style="background-image: url('paul-szewczyk-2Ev0_QHdtRU-unsplash.jpg');width: 350px;height: 180px;background-size: cover;"></div>
+                                    <% if item.images.present? %>
+                                        <%= image_tag item.images.first.image, size: "250x180" %>
+                                    <% else %>
+                                        <p> No image found </p>
+                                    <% end %>
                                 </div>
                             </div>
                             <div class="row">
@@ -33,8 +37,11 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
-                                    <%= link_to raw("View Details"), item, class: "btn btn-outline-success d-xl-flex justify-content-xl-center" %>
+                                <div class="col  d-xl-flex justify-content-xl-center">
+                                    <div class="btn-group" role="group">
+                                        <%= link_to raw("View Details"), item, class: "btn btn-outline-primary d-xl-flex justify-content-xl-center" %>
+                                        <%= link_to raw("Edit Details"), room_listing_path(item), class: "btn btn-outline-info d-xl-flex justify-content-xl-center" %>
+                                    </div>
                                 </div>
                             </div>
                         </div>
