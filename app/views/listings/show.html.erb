@@ -2,15 +2,15 @@
 
 <% if @listing.images.present? %>
     <div style='background-image: url(<%= url_for(@listing.images.first.image) %>);
-    height: 600px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;'> 
+        height: 600px;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;'> 
     </div>
 <% else %>
     <div> 
-    <h1 class="text-danger d-xl-flex justify-content-xl-center" style="margin-top: 250px;margin-bottom: 150px;"> No Image uploaded! </h1>
+        <h1 class="text-danger d-xl-flex justify-content-xl-center" style="margin-top: 250px;margin-bottom: 150px;"> No Image uploaded! </h1>
     </div>
 <% end %>
 <div class="container">
@@ -22,8 +22,8 @@
         <div class="col-xl-3">
             <div class="row" style="margin-top: 22px;">
                 <div class="col">
-                <%= link_to raw("<i class='fa fa-pen'></i> Edit"), room_listing_path(@listing), class: "btn btn-outline-info roundedButton", style: "margin-right: 15px; margin-left: 50px"  %>
-                <%= link_to raw("<i class='fa fa-trash'></i> Delete"), listings_path(@listing), class: "btn btn-outline-danger roundedButton", method: :delete, data: { confirm: "You sure?" },  style:"margin-left: 15px " %>
+                    <%= link_to raw("<i class='fa fa-pen'></i> Edit"), room_listing_path(@listing), class: "btn btn-outline-info roundedButton", style: "margin-right: 15px; margin-left: 50px"  %>
+                    <%= link_to raw("<i class='fa fa-trash'></i> Delete"), listings_path(@listing), class: "btn btn-outline-danger roundedButton", method: :delete, data: { confirm: "You sure?" },  style:"margin-left: 15px " %>
                 </div>
             </div>
         </div>
