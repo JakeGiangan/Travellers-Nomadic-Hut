@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users
   resources :listings do
     resources :images, only: [:create, :destroy]
+    resources :bookings
     member do
       get 'room'
       get 'description'
@@ -20,4 +21,5 @@ Rails.application.routes.draw do
   end
 
   get 'search' => 'search#search'
+  get '/bookings', to: 'bookings#bookings', as: 'bookings'
 end

@@ -1,0 +1,98 @@
+<%= form_for [@listing, @listing.bookings.new] do |f| %>
+<div class="border rounded border-success" style="width: 550px;height: 420px;margin-top: 25px;">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col-xl-3">
+                    <h2 class="MontserratFont" style="margin-top: 45px;margin-left: 38px;">$<%= @listing.price%></h2>
+                </div>
+                <div class="col-xl-9">
+                    <p style="margin-top: 59px;">/night</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 20px;">
+        <div class="col">
+            <%= f.hidden_field :listing_id, value: @listing.id %>
+            <%= f.text_field :check_in_date, id: "check_in_date", class: "form-control col-lg-10", readonly: true, placeholder: "Check In Date", style: "margin-right: 15px;margin-left: 30px;" %>
+        </div>
+        <div class="col">
+            <%= f.text_field :check_out_date, id: "check_out_date", class: "form-control col-lg-10", readonly: true, placeholder: "Check Out Date", style: "margin-right: 30px;margin-left: 15px;" %>
+        </div>
+    </div>
+    <hr style="width: 485px;" />
+    <div id="preview" style="display: none;" >
+        <div class="row MontserratFont">
+            <div class="col">
+                <p class="text-center">PRICE</p>
+            </div>
+            <div class="col">
+                <p class="text-center">$<%= @listing.price %></p>
+            </div>
+        </div>
+        <div class="row MontserratFont">
+            <div class="col">
+                <p class="text-center">Night(s)</p>
+            </div>
+            <div class="col">
+                <p class="text-center">x <span id="nights"></span> </p>
+            </div>
+        </div>
+        <hr style="width: 485px;" />
+        <div class="row">
+            <div class="col">
+                <h4 class="text-center">TOTAL</h4>
+            </div>
+            <div class="col">
+                <p class="text-center MontserratFont">$ <span id="total_price"></span></p>
+            </div>
+        </div>
+        <div class="row text-center d-xl-flex justify-content-xl-center">
+            <div class="col text-center d-xl-flex justify-content-xl-center">
+                <%= f.submit "RESERVE", class: "btn btn-success d-xl-flex roundedButton" %>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>
+
+<script>
+function checkSchedule(date){
+    schedule = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+    return [$.inArray(schedule, unavailableDates) == -1];
+}
+
+    $(function(){
+        unavailableDates = [];
+        var minDate = new Date();
+
+        $("#check_in_date").datepicker({
+            numberOfMonths:1,
+            dateFormat: 'dd-mm-yy',
+            minDate: minDate,
+            maxDate: '3m',
+            beforeShowDay: checkSchedule
+            onSelect: function(selectedDate) {
+                $("#check_in_date").datepicker("option", "minDate", selectedDate);
+            }
+        });
+
+        $("#check_out_date").datepicker({
+            numberOfMonths:1,
+            dateFormat: 'dd-mm-yy',
+            minDate: minDate,
+            maxDate: '3m',
+            onSelect: function(selectedDate) {
+                $("#check_out_date").datepicker("option", "minDate", selectedDate);
+                var check_in = $('#check_in_date').datepicker('getDate');
+                var check_out = $('#check_out_date').datepicker('getDate');
+                var nights = (check_out - check_in)/1000/3600/24;
+                var total_price = nights * <%= @listing.price %>
+                $('#nights').text(nights);
+                $('#total_price').text(total_price);
+                $('#preview').show();
+            }
+        });
+    });
+</script>
