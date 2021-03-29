@@ -1,0 +1,66 @@
+<% provide(:title, "Search Results" ) %>
+<div class="container MontserratFont" style="margin-bottom: 100px;">
+    <div class="row" style="margin-top: 100px;">
+        <div class="col">
+            <h1>Find your stay today!</h1>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 25px;">
+        <%= render 'form' %>
+        <div class="col">
+        <% if @listing_list.present? == false %>
+            <p> <strong><em>No Listings Found!</em></strong> <hr/> Please try again by selecting any of the options beside,<br /> we might be able to find something.. </p>
+        <% else %>
+            <% @listing_list.each do |item| %>
+                <div class="card" style="margin-bottom: 20px;">
+                    <div class="card-body">
+                        <div class="row ">
+                            <div class="col-xl-3">
+                                <div style="background-image: url(<%= url_for(item.images.first.image) %>);
+                                            height: 120px;
+                                            width: 200px;
+                                            background-size: cover;
+                                            background-position: center;"
+                                >
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col">
+                                        <h6><%= link_to item.listing_name, item, class:"text-dark" %></h6>
+                                        <hr style="background-color: #16f063;" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <ul>
+                                            <li><%= item.address %></li>
+                                            <li>$&nbsp;<%= item.price %></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col">
+                                        <ul>
+                                            <li>Rating</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xl-1 d-xl-flex justify-content-xl-center align-items-xl-center">
+                                        <%= link_to raw("<i class='fa fa-chevron-right text-info'></i>"), item %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+            
+            <div class="row" style="margin-top: 25px;">
+                <div class="col d-xl-flex justify-content-xl-center">
+                      <%= will_paginate @listing_list %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
