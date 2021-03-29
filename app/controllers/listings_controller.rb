@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   before_action :fetch_listing, except: [:new, :create, :index, :user_listings]
 
   def user_listings
