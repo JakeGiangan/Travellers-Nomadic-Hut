@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       get 'photos'
       get 'amenity'
       get 'location'
+      get 'check_current_bookings'
+      get 'review_booking'
     end
   end
 
