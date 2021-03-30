@@ -17,9 +17,7 @@ class ImagesController < ApplicationController
     @listing = Listing.find(params[:listing_id])
 
     if @images.destroy
-      if @listing.images.first.present? == false
-        @listing.update_attribute(:is_active, false)
-      end
+      @listing.update_attribute(:is_active, false) if !@listing.images.first.any
       redirect_back(fallback_location: request.referer, alert: "Image deleted...")
     end
   end

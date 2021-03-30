@@ -4,11 +4,12 @@
         <div class="col">
             <h1>Find your stay today!</h1>
             <hr />
+            
+            <%= render 'form' %>
         </div>
     </div>
 
     <div class="row" style="margin-top: 25px;">
-        <%= render 'form' %>
         <div class="col">
         <% if @listing_list.present? == false %>
             <p> <strong><em>No Listings Found!</em></strong> <hr/> Please try again by selecting any of the options beside,<br /> we might be able to find something.. </p>
