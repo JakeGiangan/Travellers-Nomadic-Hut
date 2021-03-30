@@ -18,7 +18,6 @@ Rails.application.routes.draw do
       get 'location'
     end
   end
-  
-  get '/user_listings', to: 'listings#user_listings'
+
   get 'search' => 'search#search'
 end
