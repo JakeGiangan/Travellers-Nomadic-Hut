@@ -75,14 +75,14 @@
                 <hr style="background-color: #16f063;" />
                 <div class="row">
                     <div class="col">
-                        <%= f.select :home_type_gteq, options_for_select([
+                        <%= f.select :home_type_eq, options_for_select([
                                 ["Condominium"],
                                 ["Resort"],
                                 ["Hotel"],
                                 ["Beach House"], 
                                 ["Apartment"],
                                 ["Capsule Room"]
-                            ], selected: f.object.home_type_gteq), {}, class: "roundedFormField col-lg-12", :prompt => "Select Value"
+                            ], selected: f.object.home_type_eq), {}, class: "roundedFormField col-lg-12", :prompt => "Select Value"
                         %>
                     </div>
                 </div>
