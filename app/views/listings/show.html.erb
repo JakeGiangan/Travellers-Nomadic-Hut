@@ -37,7 +37,7 @@
                     <li class="nav-item pill-1"><a role="tab" data-toggle="pill" class="nav-link active" href="#tab-1">Details</a></li>
                     <li class="nav-item pill-1"><a role="tab" data-toggle="pill" class="nav-link " href="#tab-2">Host Information</a></li>
                     <li class="nav-item pill-1"><a role="tab" data-toggle="pill" class="nav-link " href="#tab-3">Gallery</a></li>
-                    <li class="nav-item pill-1"><a role="tab" data-toggle="pill" class="nav-link " href="#tab-3">Reviews</a></li>
+                    <li class="nav-item pill-1"><a role="tab" data-toggle="pill" class="nav-link " href="#tab-4">Reviews</a></li>
                 </ul>
                 <div class="tab-content">
                      <%= render 'details' %>
@@ -46,6 +46,9 @@
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="tab-3">
                         <%= render 'gallery'%>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tab-4">
+                        <%= render 'reviews'%>
                     </div>
                 </div>
             </div>
