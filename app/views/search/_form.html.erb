@@ -33,37 +33,38 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-check">
-                                                    <%= f.check_box :has_internet_true ,class: "form-check-input" %>
+                                                    <%= check_box_tag "q[has_internet_eq]" ,true %>
                                                     <label class="form-check-label" for="formCheck-1">Internet &amp; WiFi</label>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-check">
-                                                    <%= f.check_box :has_tv_true ,class: "form-check-input" %>
+                                                    <%= check_box_tag "q[has_tv_eq]" ,true %>
                                                     <label class="form-check-label" for="formCheck-1">TV</label>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-check">
-                                                    <%= f.check_box :has_kitchen_true ,class: "form-check-input" %>
+                                                    <%= check_box_tag "q[has_kitchen_eq]" ,true %>
                                                     <label class="form-check-label" for="formCheck-1">Kitchen</label>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-check">
-                                                    <%= f.check_box :has_heating_true ,class: "form-check-input" %>
+                                                    <%= check_box_tag "q[has_heating_eq]" ,true %>
                                                     <label class="form-check-label" for="formCheck-1">Heating</label>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-check">
-                                                    <%= f.check_box :has_air_conditioning_true ,class: "form-check-input" %>
+                                                    <%= check_box_tag "q[has_air_conditioning_eq]", true  %>
                                                     <label class="form-check-label" for="formCheck-1">Air Conditioner</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <hr style="background-color: #16f063;" />
                                 <div class="row" style="margin-top: 15px;">
                                     <div class="col">
                                         <h6>House Type</h6>
@@ -77,6 +78,19 @@
                                                         ["Apartment"],
                                                         ["Capsule Room"]
                                                     ], selected: f.object.home_type_eq), {}, class: "roundedFormField col-lg-12", :prompt => "Select Value"
+                                                %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <h6>Room Type</h6>
+                                        <div class="row">
+                                            <div class="col">
+                                                <%= f.select :room_type_eq, options_for_select([
+                                                        ["Entire"],
+                                                        ["Private"],
+                                                        ["Shared"]
+                                                    ], selected: f.object.room_type_eq), {}, class: "roundedFormField col-lg-12"
                                                 %>
                                             </div>
                                         </div>
