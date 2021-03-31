@@ -79,55 +79,11 @@
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="border rounded border-success" style="width: 550px;height: 420px;margin-top: 25px;">
-                <div class="row">
-                    <div class="col">
-                        <div class="row">
-                            <div class="col-xl-3">
-                                <h2 class="MontserratFont" style="margin-top: 45px;margin-left: 38px;">$<%= @listing.price%></h2>
-                            </div>
-                            <div class="col-xl-9">
-                                <p style="margin-top: 59px;">/night</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 20px;">
-                    <div class="col"><input type="date" style="margin -right: 30px;margin-left: 30px;" /></div>
-                    <div class="col"><input type="date" style="margin-right: 30px;margin-left: 30px;" /></div>
-                </div>
-                <hr style="width: 485px;" />
-                <div class="row MontserratFont">
-                    <div class="col">
-                        <p class="text-center">PRICE</p>
-                    </div>
-                    <div class="col">
-                        <p class="text-center">$<%= @listing.price %></p>
-                    </div>
-                </div>
-                <div class="row MontserratFont">
-                    <div class="col">
-                        <p class="text-center">Night(s)</p>
-                    </div>
-                    <div class="col">
-                        <p class="text-center">$ computed nights </p>
-                    </div>
-                </div>
-                <hr style="width: 485px;" />
-                <div class="row">
-                    <div class="col">
-                        <h4 class="text-center">TOTAL</h4>
-                    </div>
-                    <div class="col">
-                        <p class="text-center MontserratFont">$total price</p>
-                    </div>
-                </div>
-                <div class="row text-center d-xl-flex justify-content-xl-center">
-                    <div class="col text-center d-xl-flex justify-content-xl-center"><button class="btn btn-success d-xl-flex roundedButton" type="button" >RESERVE</button></div>
-                </div>
+        <% if current_user.id != @listing.user_id%>
+            <div class="col">
+                <%= render'booking' %>
             </div>
-        </div>
+        <% end %>
     </div>
     <div class="row" style="margin-top: 20px;margin-bottom: 130px;">
         <div class="col">
