@@ -6,16 +6,16 @@
             </div>
             <div class="card-body">
                 <% @user_listings.each do |item|  %>
-                <div class="row" style="margin-bottom: 15px;">
-                    <div class="col-xl-2 d-xl-flex align-items-xl-center">
-                        <p><%= item.check_in_date.strftime("%B %d, %Y") %></p>
+                    <div class="row" style="margin-bottom: 15px;">
+                        <div class="col-xl-2 d-xl-flex align-items-xl-center">
+                            <p><%= item.check_in_date.strftime("%B %d, %Y") %></p>
+                        </div>
+                        <div class="col-xl-2"><img /></div>
+                        <div class="col d-xl-flex align-items-xl-center">
+                            <p><%= item.check_in_date %><br /><%= item.first_name %> <%= item.last_name %></p>
+                        </div>
+                        <div class="col d-xl-flex align-items-xl-center"><button class="btn btn-primary col-lg-12" type="button">Review Guest</button></div>
                     </div>
-                    <div class="col-xl-2"><img /></div>
-                    <div class="col d-xl-flex align-items-xl-center">
-                        <p><%= item.check_in_date %><br /><%= item.first_name %> <%= item.last_name %></p>
-                    </div>
-                    <div class="col d-xl-flex align-items-xl-center"><button class="btn btn-primary col-lg-12" type="button">Review Guest</button></div>
-                </div>
                 <% end %>
                 <div class="row">
                     <div class="col d-xl-flex justify-content-xl-center" style="margin-top: 15px;">
