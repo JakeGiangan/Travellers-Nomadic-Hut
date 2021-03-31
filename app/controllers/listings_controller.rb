@@ -35,6 +35,7 @@ class ListingsController < ApplicationController
 
   def photos
     @images = @listing.images
+
   end
 
   def amenity
@@ -44,7 +45,7 @@ class ListingsController < ApplicationController
   end
 
   def update
-    @final_data = is_ready_to_publish(@listing) ? listing_params.merge(is_active: true) : listing_params
+    @final_data = is_ready_to_publish(@listing) ? listing_params.merge(is_active: true) : listing_params.merge(is_active: false)
     if @listing.update_attributes(@final_data)
       flash[:notice] = 'Updated Listing Details!'
     else

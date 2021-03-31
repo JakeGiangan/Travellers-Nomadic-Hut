@@ -18,4 +18,6 @@ Rails.application.routes.draw do
       get 'location'
     end
   end
+
+  get 'search' => 'search#search'
 end
