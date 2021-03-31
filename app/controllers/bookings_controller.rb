@@ -10,15 +10,32 @@ class BookingsController < ApplicationController
     final_params = booking_params.merge(price: listing.price, total_price: total_computed_price)
 
     @booking = current_user.bookings.new(final_params)
-    if @booking.save
-      flash[:notice] = 'Booking Saved..'
+    if listing.user_id == current_user.id
+      flash[:alert] = 'You cannot book your own listing!'
     else
-      flash[:alert] = 'Booking Failed.. Try again later'
+      if @booking.save
+        flash[:notice] = 'Booking Saved..'
+      else
+        flash[:alert] = 'Booking Failed.. Try again later'
+      end
     end
     redirect_back(fallback_location: root_path)
   end
 
   def bookings
+    @user_trips = Booking
+                  .joins('JOIN listings ON listings.id = bookings.listing_id')
+                  .joins('JOIN users ON users.id = listings.user_id')
+                  .select('listing_name, check_in_date, users.first_name, users.last_name, bookings.id')
+                  .where(user_id:  current_user)
+                  .paginate(page: params[:page], per_page: 5)
+
+    @user_listings = Listing
+                     .joins('JOIN bookings ON listings.id = bookings.listing_id')
+                     .joins('JOIN users ON users.id = bookings.user_id')
+                     .select('listing_name, check_in_date, users.first_name, users.last_name, bookings.id')
+                     .where("listings.user_id LIKE #{current_user.id}")
+                     .paginate(page: params[:page], per_page: 5)
   end
 
   private

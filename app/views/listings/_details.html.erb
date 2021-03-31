@@ -79,9 +79,11 @@
                 </div>
             </div>
         </div>
+        <% if current_user.id != @listing.user_id%>
         <div class="col">
            <%= render'booking' %>
         </div>
+        <% end %>
     </div>
     <div class="row" style="margin-top: 20px;margin-bottom: 130px;">
         <div class="col">
