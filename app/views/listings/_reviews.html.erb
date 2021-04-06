@@ -10,7 +10,16 @@
                             <hr>
                         </div>
                         <div class="col-lg-2">
-                            <p class="text-right">stars</p>
+                            <div class="review-rating text-right" data-score="<%= reviewItem.rating %>"></div>
+                            <script>
+                                $('.review-rating').raty({
+                                    readOnly: true,
+                                    score: function() {
+                                    return $(this).attr('data-score');
+                                    },
+                                    path: '/assets/'
+                                });
+                            </script>
                             <p class="text-right"><%= reviewItem.created_at.strftime("%B %d, %Y") %></p>
                         </div>
                     </div>
@@ -20,7 +29,7 @@
                 </div>
             </div>
             <% end %>
-            <% if @listing_reviews.present? == false%>
+            <% if @listing_reviews.present? == false %>
                 <p> No reviews Found </p>
             <% end %>
             <nav class="d-xl-flex justify-content-xl-center" style="margin-top: 50px;margin-bottom: 100px;">
