@@ -10,7 +10,14 @@ class ListingsController < ApplicationController
   def show
     @host_details = User.find(@listing.user_id)
     @carousel = @listing.images
-    @listing_reviews = Review.where("listing_id like #{@listing.id} and user_id != #{current_user.id}").joins('JOIN users ON users.id = reviews.user_id').paginate(page: params[:page], per_page: 3)
+    @listing_reviews = Review
+                            .where("listing_id like #{@listing.id} and user_id != #{current_user.id}")
+                            .joins('JOIN users ON users.id = reviews.user_id')
+                            .paginate(page: params[:page], per_page: 3)
+    @review_average = Review
+                            .where("listing_id like #{@listing.id} and user_id != #{current_user.id}")
+                            .joins('JOIN users ON users.id = reviews.user_id')
+                            .average(:rating)
   end
 
   def create

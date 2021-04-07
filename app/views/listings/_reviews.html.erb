@@ -1,6 +1,16 @@
 <div role="tabpanel" class="tab-pane fade show active" id="tab-4">
     <div class="row" style="margin-top: 30px;">
         <div class="col">
+            <h2 style="margin-bottom: 15px;"><%= pluralize(@listing_reviews.count, "Review", ) %>: <span id="review-average" data-score="<%= @review_average %>"></span> </h2>
+            <script>
+                $('#review-average').raty({
+                    readOnly: true,
+                    score: function() {
+                    return $(this).attr('data-score');
+                    },
+                    path: '/assets/'
+                });
+            </script>
             <% @listing_reviews.each do |reviewItem| %>
             <div class="card" style="margin-bottom: 15px;">
                 <div class="card-body">
@@ -10,9 +20,9 @@
                             <hr>
                         </div>
                         <div class="col-lg-2">
-                            <div class="review-rating text-right" data-score="<%= reviewItem.rating %>"></div>
+                            <div class="review-<%= reviewItem.id%> text-right" data-score="<%= reviewItem.rating %>"></div>
                             <script>
-                                $('.review-rating').raty({
+                                $('.review-<%= reviewItem.id%>').raty({
                                     readOnly: true,
                                     score: function() {
                                     return $(this).attr('data-score');
