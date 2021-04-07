@@ -36,17 +36,26 @@
 <div class="container MontserratFont" style="margin-bottom: 100px;">
     <div class="row" style="margin-top: 100px;">
         <div class="col">
-            <h1>Find your stay today!</h1>
-            <hr />
-            
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-xs-10">
+                    <h1>Find your stay today!</h1>
+                </div>
+                <div class="col-lg-2 col-md-2 col-xs-2 pull-right">
+                    <a class="btn btn-primary" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1" href="#collapse-1" role="button">Show Filters</a>
+                </div>
+            </div>
+            <hr />            
             <%= render 'form' %>
         </div>
     </div>
 
     <div class="row" style="margin-top: 25px;">
-        <div class="col-lg-8">
+        <div class="col">
             <% if @listing_list.present? == false %>
-                <p> <strong><em>No Listings Found!</em></strong> <hr/> Please try again by selecting any of the options beside,<br /> we might be able to find something.. </p>
+                <p>
+                    <strong><em>No Listings Found!</em></strong>
+                    <hr/> Please try again by selecting any of the options beside,<br /> we might be able to find something..
+                </p>
             <% else %>
                 <% @listing_list.each do |item| %>
                     <div class="card" style="margin-bottom: 20px;">
