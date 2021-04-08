@@ -27,4 +27,7 @@ Rails.application.routes.draw do
   get 'search' => 'search#search'
   get '/bookings', to: 'bookings#bookings', as: 'bookings'
   resources :reviews, only: [:create]
+
+  get '/contact_us', to: "static_pages#contact_us"
+  get '/about_us', to: "static_pages#about_us"
 end

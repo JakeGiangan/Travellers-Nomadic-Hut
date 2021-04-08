@@ -49,26 +49,24 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Column 1</th>
-                            <th>Column 2</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Cell 1</td>
-                            <td>Cell 2</td>
-                        </tr>
-                        <tr>
-                            <td>Cell 3</td>
-                            <td>Cell 4</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <% @user_trips.each do |item| %>
+            <div class="row" style="margin-bottom: 15px;">
+                <div class="col-xl-2 d-xl-flex align-items-xl-center">
+                    <p><%= item.check_in_date.strftime("%B %d, %Y") %></p>
+                </div>
+                <div class="col-xl-2"><img /></div>
+                <div class="col d-xl-flex align-items-xl-center">
+                    <p><%= item.listing_name %><br /><%= item.first_name %> <%= item.last_name %></p>
+                </div>
+                <div class="col d-xl-flex align-items-xl-center"><button class="btn btn-primary col-lg-12" type="button">Review Host</button></div>
+            </div>
+        <% end %>
+        
+        <div class="row">
+            <div class="col d-xl-flex justify-content-xl-center" style="margin-top: 15px;">
+                <nav>
+                    <%= will_paginate @user_trips %>
+                </nav>
             </div>
         </div>
     </div>

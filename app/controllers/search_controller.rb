@@ -13,9 +13,9 @@ class SearchController < ApplicationController
                         .pluck(:listing_id)
       @search = @search.where.not(id: @bookings)
     end
-    if @search.nil? == false
+    unless @search.nil?
       @search = @search.ransack(params[:q])
       @listing_list = @search.result(distinct: true).paginate(page: params[:page], per_page: 2)
-    end
+    end  
   end
 end

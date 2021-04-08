@@ -30,7 +30,7 @@
     <nav class="navbar navigationItems justify-content-between">
         <%= link_to raw(" Home"), root_url, class: "nav-item nav-link text-dark headerItem" %>
         <%= link_to raw("Host your home"), listings_url, class: "nav-item nav-link text-dark headerItem"%>
-        <a class="nav-item nav-link text-dark headerItem" href="#">About Us</a>
-        <a class="nav-item nav-link text-dark headerItem" href="#">Contact Us</a>
+        <%= link_to raw("About Us"), about_us_url, class: "nav-item nav-link text-dark headerItem"%>
+        <%= link_to raw("Contact Us"), contact_us_url, class: "nav-item nav-link text-dark headerItem"%>
     </nav>
 </div>
