@@ -12,7 +12,7 @@
                         </div>
                         <div class="col-xl-2"><img /></div>
                         <div class="col d-xl-flex align-items-xl-center">
-                            <p><%= item.check_in_date %><br /><%= item.first_name %> <%= item.last_name %></p>
+                            <p><%= item.check_in_date %><br /><%= item.first_name %> <%= item.last_name %> </p>
                         </div>
                         <div class="col d-xl-flex align-items-xl-center">
                             <div id="postGuestReview_<%=item.id%>" role="dialog" tabindex="-1" class="modal fade show">
@@ -22,8 +22,8 @@
                                             <h4 class="modal-title">Post a Review</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
                                             <%= form_for(@review) do |f| %>
                                                 <div class="modal-body">
-                                                    <%= f.hidden_field :user_id, value: current_user.id %>
-                                                    <%= f.hidden_field :listing_id, value: item.id %>
+                                                    <%= f.hidden_field :listing_id, value: item.listing_id %>
+                                                    <%= f.hidden_field :booking_id, value: item.id %>
                                                     <div id="stars_<%= item.id %>" class="d-xl-flex justify-content-xl-center" style="margin-bottom: 30px;"></div>
                                                     <script>
                                                     $('#stars_<%= item.id %>').raty({
@@ -41,7 +41,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            <button class="btn btn-primary col-lg-12 roundedButton" type="button" data-toggle="modal" data-target="#postGuestReview_<%=item.id%> " >Review Guest</button>
+                            <% if check_for_review(current_user.id, item.id, item.listing_id) == false %>
+                                <button class="btn btn-primary col-lg-12 roundedButton" type="button" data-toggle="modal" data-target="#postGuestReview_<%=item.id%> " >Review Guest</button>
+                            <% end %>
                         </div>
                     </div>
                 <% end %>

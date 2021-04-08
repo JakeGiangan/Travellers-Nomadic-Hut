@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2021_03_31_094618) do
 
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "listing_id"
+    t.integer "booking_id"
     t.integer "user_id"
     t.text "content"
     t.integer "rating"
