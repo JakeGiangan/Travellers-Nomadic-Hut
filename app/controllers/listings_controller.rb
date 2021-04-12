@@ -11,11 +11,13 @@ class ListingsController < ApplicationController
     @host_details = User.find(@listing.user_id)
     @carousel = @listing.images
     @listing_reviews = Review
-                            .where("listing_id like #{@listing.id} and user_id != #{current_user.id}")
+                            .where("bookings.listing_id like #{@listing.id} and reviews.user_id != #{@listing.user_id}")
+                            .joins('JOIN bookings ON reviews.booking_id = bookings.id')
                             .joins('JOIN users ON users.id = reviews.user_id')
                             .paginate(page: params[:page], per_page: 3)
     @review_average = Review
-                            .where("listing_id like #{@listing.id} and user_id != #{current_user.id}")
+                            .where("bookings.listing_id like #{@listing.id} and reviews.user_id != #{@listing.user_id}")
+                            .joins('JOIN bookings ON reviews.booking_id = bookings.id')
                             .joins('JOIN users ON users.id = reviews.user_id')
                             .average(:rating)
   end

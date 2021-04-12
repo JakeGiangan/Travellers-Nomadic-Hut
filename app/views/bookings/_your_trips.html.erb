@@ -23,7 +23,6 @@
                                             <%= form_for(@review) do |f| %>
                                                 <div class="modal-body">
                                                     <%= f.hidden_field :booking_id, value: item.id %>
-                                                    <%= f.hidden_field :listing_id, value: item.listing_id %>
                                                     <div id="stars_<%= item.id %>" class="d-xl-flex justify-content-xl-center" style="margin-bottom: 30px;"></div>
                                                     <script>
                                                     $('#stars_<%= item.id %>').raty({
@@ -41,7 +40,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            <% if check_for_review(current_user.id, item.id, item.listing_id) == false %>
+                            <% if check_for_review(current_user.id, item.id) == false %>
                             <button class="btn btn-primary col-lg-12 roundedButton" type="button" data-toggle="modal" data-target="#postHostReview_<%= item.id %>" >Review Host</button>
                             <% end %>
                         </div>
