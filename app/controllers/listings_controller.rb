@@ -18,8 +18,7 @@ class ListingsController < ApplicationController
     @review_average = Review
                             .where("bookings.listing_id like #{@listing.id} and reviews.user_id != #{@listing.user_id}")
                             .joins('JOIN bookings ON reviews.booking_id = bookings.id')
-                            .joins('JOIN users ON users.id = reviews.user_id')
-                            .average(:rating)
+                            .pluck('avg(rating)')
   end
 
   def create
