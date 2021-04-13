@@ -11,16 +11,16 @@
                             <p><%= item.check_in_date.strftime("%B %d, %Y") %></p>
                         </div>
                         <div class="col-xl-2">
-                        <% if item.listing.images.present? %>
-                            <%= link_to image_tag(item.listing.images.first.image, size: "120x80"), listing_path(item.listing.id) %>
+                        <% if item.images.present? %>
+                            <%= link_to image_tag(item.images.first.image, size: "120x80"), listing_path(item.id) %>
                         <% else %>
                             <p> No image found </p>
                         <% end %>
                         </div>
                         <div class="col d-xl-flex align-items-xl-center">
                             <p>
-                                <%= link_to item.listing.listing_name, listing_path(item.listing.id)%>
-                                <br /><%= item.user.first_name %> <%= item.user.last_name %>
+                                <%= link_to item.listing_name, listing_path(item.id)%>
+                                <br /><%= item.first_name %> <%= item.last_name %>
                             </p>
                         </div>
                         <div class="col d-xl-flex align-items-xl-center">
@@ -31,7 +31,7 @@
                                             <h4 class="modal-title">Post a Review</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
                                             <%= form_for(@review) do |f| %>
                                                 <div class="modal-body">
-                                                    <%= f.hidden_field :booking_id, value: item.id %>
+                                                    <%= f.hidden_field :booking_id, value: item.book %>
                                                     <div id="stars_<%= item.id %>" class="d-xl-flex justify-content-xl-center" style="margin-bottom: 30px;"></div>
                                                     <script>
                                                     $('#stars_<%= item.id %>').raty({
@@ -49,7 +49,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            <% if check_for_review(current_user.id, item.id) == false %>
+                            <% if check_for_review(current_user.id, item.book) == false %>
                             <button class="btn btn-primary col-lg-12 roundedButton" type="button" data-toggle="modal" data-target="#postHostReview_<%= item.id %>" >Review Host</button>
                             <% end %>
                         </div>
