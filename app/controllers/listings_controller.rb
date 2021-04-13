@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!
   before_action :fetch_listing, except: [:new, :create, :index]
+  include ReviewsHelper
 
   def index
     @listing = Listing.new
@@ -10,15 +11,8 @@ class ListingsController < ApplicationController
   def show
     @host_details = User.find(@listing.user_id)
     @carousel = @listing.images
-    @listing_reviews = Review
-                            .where("bookings.listing_id like #{@listing.id} and reviews.user_id != #{@listing.user_id}")
-                            .joins('JOIN bookings ON reviews.booking_id = bookings.id')
-                            .joins('JOIN users ON users.id = reviews.user_id')
-                            .paginate(page: params[:page], per_page: 3)
-    @review_average = Review
-                            .where("bookings.listing_id like #{@listing.id} and reviews.user_id != #{@listing.user_id}")
-                            .joins('JOIN bookings ON reviews.booking_id = bookings.id')
-                            .pluck('avg(rating)')
+    @listing_reviews = fetch_reviews(@listing)
+    @review_average = fetch_review_score(@listing)
   end
 
   def create
@@ -65,7 +59,7 @@ class ListingsController < ApplicationController
   def destroy
     Listing.find(params[:id]).destroy
     flash[:alert] = 'Listing Deleted!'
-    redirect_to properties_url
+    redirect_to listings_url
   end
 
   def check_current_bookings
