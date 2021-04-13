@@ -15,19 +15,33 @@
 <% end %>
 <div class="container">
     <div class="row" style="margin-top: 55px;">
-        <div class="col">
+        <div class="col-xl-8">
             <p><span style="font-size: 42px;color: #16f063;"><%= @listing.listing_name %></span> <br/> Hosted by <%= @host_details.first_name %> <%= @host_details.last_name %></p>
         </div>
-        <% if @listing.user_id == current_user.id %>
-        <div class="col-xl-3">
+        <div class="col-xl-4">
             <div class="row" style="margin-top: 22px;">
                 <div class="col">
-                    <%= link_to raw("<i class='fa fa-pen'></i> Edit"), room_listing_path(@listing), class: "btn btn-outline-info roundedButton", style: "margin-right: 15px; margin-left: 50px"  %>
-                    <%= link_to raw("<i class='fa fa-trash'></i> Delete"), listing_url(@listing), class: "btn btn-outline-danger roundedButton", method: :delete, data: { confirm: "You sure?" },  style:"margin-left: 15px " %>
+                    <% if @listing.user_id == current_user.id %>
+                            <%= link_to raw("<i class='fa fa-pen'></i> Edit"), room_listing_path(@listing), class: "btn btn-outline-info roundedButton", style: "margin-right: 15px; margin-left: 50px"  %>
+                            <%= link_to raw("<i class='fa fa-trash'></i> Delete"), listing_url(@listing), class: "btn btn-outline-danger roundedButton", method: :delete, data: { confirm: "You sure?" },  style:"margin-left: 15px " %>
+                    <%end%>
+                    <h4 style="margin-bottom: 15px;"><%= pluralize(@listing_reviews.count, "Review", ) %>: <span id="review-average" data-score="<%= @review_average %>"></span> </h4>
+                    <script>
+                        $('#review-average').raty({
+                            readOnly: true,
+                            score: function() {
+                                if $(this).attr('data-score') != 0{
+                                    return $(this).attr('data-score');
+                                }else{
+                                    return 0
+                                }
+                            },
+                            path: '/assets/'
+                        });
+                    </script>
                 </div>
             </div>
         </div>
-        <%end%>
     </div>
     <div class="row">
         <div class="col">
@@ -37,7 +51,7 @@
                     <li class="nav-item pill-1"><a role="tab" data-toggle="pill" class="nav-link active" href="#tab-1">Details</a></li>
                     <li class="nav-item pill-1"><a role="tab" data-toggle="pill" class="nav-link " href="#tab-2">Host Information</a></li>
                     <li class="nav-item pill-1"><a role="tab" data-toggle="pill" class="nav-link " href="#tab-3">Gallery</a></li>
-                    <li class="nav-item pill-1"><a role="tab" data-toggle="pill" class="nav-link " href="#tab-3">Reviews</a></li>
+                    <li class="nav-item pill-1"><a role="tab" data-toggle="pill" class="nav-link " href="#tab-4">Reviews</a></li>
                 </ul>
                 <div class="tab-content">
                      <%= render 'details' %>
@@ -46,6 +60,9 @@
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="tab-3">
                         <%= render 'gallery'%>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tab-4">
+                        <%= render 'reviews'%>
                     </div>
                 </div>
             </div>

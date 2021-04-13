@@ -23,19 +23,21 @@ class BookingsController < ApplicationController
   end
 
   def bookings
-    @user_trips = Booking
-                  .joins('JOIN listings ON listings.id = bookings.listing_id')
+    @user_trips = Listing
+                  .joins('JOIN bookings ON listings.id = bookings.listing_id')
                   .joins('JOIN users ON users.id = listings.user_id')
-                  .select('listing_name, check_in_date, users.first_name, users.last_name, bookings.id')
-                  .where(user_id:  current_user)
+                  .select('listings.*, check_in_date, users.first_name, users.last_name, bookings.id AS book')
+                  .where("bookings.user_id LIKE #{current_user.id}")
                   .paginate(page: params[:page], per_page: 5)
 
     @user_listings = Listing
                      .joins('JOIN bookings ON listings.id = bookings.listing_id')
                      .joins('JOIN users ON users.id = bookings.user_id')
-                     .select('listing_name, check_in_date, users.first_name, users.last_name, bookings.id')
+                     .select('listings.*, check_in_date, users.first_name, users.last_name, bookings.id AS book')
                      .where("listings.user_id LIKE #{current_user.id}")
                      .paginate(page: params[:page], per_page: 5)
+
+    @review = Review.new
   end
 
   private

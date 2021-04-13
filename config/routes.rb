@@ -24,4 +24,5 @@ Rails.application.routes.draw do
 
   get 'search' => 'search#search'
   get '/bookings', to: 'bookings#bookings', as: 'bookings'
+  resources :reviews, only: [:create]
 end
