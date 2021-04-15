@@ -61,17 +61,17 @@
             <script>
                 function initialize() {
                     var location = [];
-                    "<% @listing_list.each do |pin| %>"
+                    <% @listing_list.each do |pin| %>
                         location.push({lat: Number("<%= pin.latitude %>"), lng: Number("<%= pin.longitude %>")});
-                    "<% end %>"
+                    <% end %>
                     console.log(location)
 
                     var infoWindow = [];
-                     "<% @listing_list.each do |info| %>"
+                     <% @listing_list.each do |info| %>
                         infoWindow.push(new google.maps.InfoWindow({
                             content: '<div id="content"><%= info.price %></div>'
                         }));
-                    "<%end%>"
+                    <%end%>
 
                     var map = new google.maps.Map(document.getElementById('map'),{
                         center: location[0],
