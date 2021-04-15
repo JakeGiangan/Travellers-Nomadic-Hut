@@ -4,6 +4,6 @@ class SearchController < ApplicationController
     @search = Listing.where(is_active: true)
     @search = @search.where(address: session[:address])
     @search = @search.ransack(params[:q])
-    @listing_list = @search.result(distinct: true).paginate(page: params[:page], per_page: 10)
+    @listing_list = @search.result(distinct: true).paginate(page: params[:page], per_page: 2)
   end
 end
