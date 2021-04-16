@@ -1,5 +1,27 @@
 <% provide(:title, "#{@listing.listing_name}" ) %>
+<script type='text/javascript' async src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDNeXbH-bDElDPrrO3cPtyfO4L07k4L6aY&callback=initialize'></script>
+<script>
+    function initialize() {
+        var location = {lat: Number("<%= @listing.latitude %>"), lng: Number("<%= @listing.longitude %>")};
+        var map = new google.maps.Map(document.getElementById('map'),{
+            center: location,
+            zoom: 20
+        });
 
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+
+        var infoWindow = new google.maps.InfoWindow({
+            content: '<div id="content"><%= image_tag @listing.images.first.image, size: "400x200" %></div>'
+        });
+
+        infoWindow.open(map, marker);
+    }
+
+    google.maps.event.addDomListener(window,'load', initialize);
+</script>
 <% if @listing.images.present? %>
     <div style='background-image: url(<%= url_for(@listing.images.first.image) %>);
         height: 600px;
