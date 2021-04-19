@@ -63,7 +63,6 @@
                                                         maxDate: '3m',
                                                         onSelect: function(selectedDate) {
                                                             $("#check_out_date").datepicker("option", "minDate", selectedDate);
-                                                            $('#check_out_date').attr("disabled", false);
                                                         }
                                                     });
 
@@ -82,7 +81,7 @@
                                                 <%= text_field_tag :check_in_date, params[:check_in_date], id: "check_in_date", class: "form-control col-lg-10", readonly: true, placeholder: "Check In Date", style: "margin-right: 15px;margin-left: 30px;" %>
                                             </div>
                                             <div class="col">
-                                                <%= text_field_tag :check_out_date, params[:check_out_date], id: "check_out_date", class: "form-control col-lg-10", readonly: true, placeholder: "Check Out Date", style: "margin-right: 30px;margin-left: 15px;" , disabled: true %>
+                                                <%= text_field_tag :check_out_date, params[:check_out_date], id: "check_out_date", class: "form-control col-lg-10", readonly: true, placeholder: "Check Out Date", style: "margin-right: 30px;margin-left: 15px;" %>
                                             </div>
                                         </div>
                                     </div>
