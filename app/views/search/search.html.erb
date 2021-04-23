@@ -1,5 +1,5 @@
 <% provide(:title, "Search Results" ) %>
-<script type='text/javascript' async src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDNeXbH-bDElDPrrO3cPtyfO4L07k4L6aY&callback=initialize'></script>
+
 <script type='text/javascript'>
     function initialize() {
         var location = [];
@@ -8,15 +8,15 @@
         <% end %>
 
         var infoWindow = [];
-            <% @listing_list.each do |info| %>
+        <% @listing_list.each do |info| %>
             infoWindow.push(new google.maps.InfoWindow({
                 content: '<div id="content"><%= info.price %></div>'
             }));
-        <%end%>
+        <% end %>
 
         var map = new google.maps.Map(document.getElementById('map'),{
             center: location[0],
-            zoom: 16
+            zoom: 14
         });
 
         var marker = [];

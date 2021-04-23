@@ -108,8 +108,4 @@ class ListingsController < ApplicationController
     check.size > 0 ? true : false
   end
 
-  def address_changed?
-    @listing = Listing.find(params[:id])
-    @listing.address != params[:address]? true : false 
-  end
 end
