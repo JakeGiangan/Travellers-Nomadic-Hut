@@ -1,11 +1,12 @@
 <% provide(:title, "Search Results" ) %>
+<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDNeXbH-bDElDPrrO3cPtyfO4L07k4L6aY&callback=loadLocations'></script>
 <script type='text/javascript'>
-    function initMap() {
+    function loadLocations() {
         var location = [];
         <% @listing_list.each do |pin| %>
             location.push({lat: Number("<%= pin.latitude %>"), lng: Number("<%= pin.longitude %>")});
         <% end %>
-        console.log(location);
+        
         var infoWindow = [];
         <% @listing_list.each do |info| %>
             infoWindow.push(new google.maps.InfoWindow({
@@ -29,9 +30,8 @@
             infoWindow[i].open(map, marker[i]);
         }
     }
-    google.maps.event.addDomListener(window,'load', initialize);
+    google.maps.event.addDomListener(window,'load', loadLocations);
 </script>
-<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDNeXbH-bDElDPrrO3cPtyfO4L07k4L6aY&callback=initMap' async defer></script>
 
 <div class="container MontserratFont" style="margin-bottom: 100px;">
     <div class="row" style="margin-top: 100px;">
