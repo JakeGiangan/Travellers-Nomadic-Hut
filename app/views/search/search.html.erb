@@ -41,7 +41,9 @@
                     <h1>Find your stay today!</h1>
                 </div>
                 <div class="col-lg-2 col-md-2 col-xs-2 pull-right">
-                    <a class="btn btn-primary" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1" href="#collapse-1" role="button">Show Filters</a>
+                    <% if @listing_list.nil? == false && @listing_list.empty? == false%>
+                        <a class="btn btn-primary" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1" href="#collapse-1" role="button">Show Filters</a>
+                    <% end %>
                 </div>
             </div>
             <hr />            
@@ -100,7 +102,9 @@
                 <% end %>
             <% end %>
         </div>
-        <div id="map" class="col-lg-4" style="min-width: 200px;height: 400px;"></div>
+        <% if @listing_list.nil? == false && @listing_list.empty? == false %>
+            <div id="map" class="col-lg-4" style="min-width: 200px;height: 400px;"></div>
+        <% end %>
             <div class="row" style="margin-top: 25px;">
                 <div class="col d-xl-flex justify-content-xl-center">
                       <%= will_paginate @listing_list %>
