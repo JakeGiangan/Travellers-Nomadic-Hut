@@ -107,4 +107,5 @@ class ListingsController < ApplicationController
     check = @listing.bookings.where('? < check_in_date AND check_out_date < ?', check_in_date, check_out_date)
     check.size > 0 ? true : false
   end
+
 end

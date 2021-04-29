@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col">
-        <div><a class="btn btn-primary" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1" href="#collapse-1" role="button">Show Filters</a>
+        <div>
             <%= search_form_for @search, url: search_path do |f| %>
                 <div class="collapse" id="collapse-1" style="margin-top:25px;">
                     <div class="col-xl-12">
@@ -14,11 +14,74 @@
                                             </div>
                                         </div>
                                         <div class="row" style="margin-bottom: 15px;">
+                                            <div class="col-lg-8">
+                                                <label>Price Range</label>
+                                                <div id="slider-range"></div>
+                                                <script>
+                                                $( function() {
+                                                    $( "#slider-range" ).slider({
+                                                    range: true,
+                                                    min: 0,
+                                                    max: 3000,
+                                                    values: [ 0, 3000 ],
+                                                    slide: function( event, ui ) {
+                                                        if (ui.values[0] == ui.values[1]) {
+                                                            return false;
+                                                        }
+                                                        $("#min-price").val(ui.values[0]);
+                                                        $("#max-price").val(ui.values[1]);
+                                                    }
+                                                    });
+                                                } );
+                                                </script>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <label> Min Price </label>
+                                                <%= f.number_field :price_gteq, id: "min-price", class: "col-lg-12 roundedFormField", placeholder: "min price" %>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <label> Max Price </label>
+                                                <%= f.number_field :price_lteq, id: "max-price", class: "col-lg-12 roundedFormField", placeholder: "max price" %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row">
                                             <div class="col">
-                                                <%= f.number_field :price_gteq, class: "col-lg-12 roundedFormField", placeholder: "min price" %>
+                                                <hr style="background-color: #16f063;" />
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-bottom: 15px;">
+                                            <script>
+                                                $(function() {
+                                                    $("#check_in_date").datepicker({
+                                                        numberOfMonths:1,
+                                                        dateFormat: 'yy-mm-dd',
+                                                        minDate: 0,
+                                                        maxDate: '3m',
+                                                        onSelect: function(selectedDate) {
+                                                            $("#check_out_date").datepicker("option", "minDate", selectedDate);
+                                                        }
+                                                    });
+
+                                                    $("#check_out_date").datepicker({
+                                                        numberOfMonths:1,
+                                                        dateFormat: 'yy-mm-dd',
+                                                        minDate: 0,
+                                                        maxDate: '3m',
+                                                        onSelect: function(selectedDate) {
+                                                            $("#check_in_date").datepicker("option", "maxDate", selectedDate);
+                                                        }
+                                                    });
+                                                });
+                                            </script>
+                                            <div class="col">
+                                                <%= text_field_tag :check_in_date, params[:check_in_date], id: "check_in_date", class: "form-control col-lg-10", readonly: true, placeholder: "Check In Date", style: "margin-right: 15px;margin-left: 30px;" %>
                                             </div>
                                             <div class="col">
-                                                <%= f.number_field :price_lteq, class: "col-lg-12 roundedFormField", placeholder: "max price" %>
+                                                <%= text_field_tag :check_out_date, params[:check_out_date], id: "check_out_date", class: "form-control col-lg-10", readonly: true, placeholder: "Check Out Date", style: "margin-right: 30px;margin-left: 15px;" %>
                                             </div>
                                         </div>
                                     </div>
@@ -156,3 +219,4 @@
         </div>
     </div>
 </div>
+

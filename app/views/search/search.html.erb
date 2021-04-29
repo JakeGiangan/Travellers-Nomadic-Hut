@@ -1,22 +1,22 @@
 <% provide(:title, "Search Results" ) %>
-<script type='text/javascript' async src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDNeXbH-bDElDPrrO3cPtyfO4L07k4L6aY&callback=initialize'></script>
+<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDNeXbH-bDElDPrrO3cPtyfO4L07k4L6aY&callback=loadLocations'></script>
 <script type='text/javascript'>
-    function initialize() {
+    function loadLocations() {
         var location = [];
         <% @listing_list.each do |pin| %>
             location.push({lat: Number("<%= pin.latitude %>"), lng: Number("<%= pin.longitude %>")});
         <% end %>
-
+        
         var infoWindow = [];
-            <% @listing_list.each do |info| %>
+        <% @listing_list.each do |info| %>
             infoWindow.push(new google.maps.InfoWindow({
                 content: '<div id="content"><%= info.price %></div>'
             }));
-        <%end%>
+        <% end %>
 
         var map = new google.maps.Map(document.getElementById('map'),{
             center: location[0],
-            zoom: 16
+            zoom: 14
         });
 
         var marker = [];
@@ -30,23 +30,34 @@
             infoWindow[i].open(map, marker[i]);
         }
     }
-    google.maps.event.addDomListener(window,'load', initialize);
+    google.maps.event.addDomListener(window,'load', loadLocations);
 </script>
 
 <div class="container MontserratFont" style="margin-bottom: 100px;">
     <div class="row" style="margin-top: 100px;">
         <div class="col">
-            <h1>Find your stay today!</h1>
-            <hr />
-            
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-xs-10">
+                    <h1>Find your stay today!</h1>
+                </div>
+                <div class="col-lg-2 col-md-2 col-xs-2 pull-right">
+                    <% if @listing_list.nil? == false && @listing_list.empty? == false%>
+                        <a class="btn btn-primary" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1" href="#collapse-1" role="button">Show Filters</a>
+                    <% end %>
+                </div>
+            </div>
+            <hr />            
             <%= render 'form' %>
         </div>
     </div>
 
     <div class="row" style="margin-top: 25px;">
-        <div class="col-lg-8">
+        <div class="col">
             <% if @listing_list.present? == false %>
-                <p> <strong><em>No Listings Found!</em></strong> <hr/> Please try again by selecting any of the options beside,<br /> we might be able to find something.. </p>
+                <p>
+                    <strong><em>No Listings Found!</em></strong>
+                    <hr/> Please try again by selecting any of the options beside,<br /> we might be able to find something..
+                </p>
             <% else %>
                 <% @listing_list.each do |item| %>
                     <div class="card" style="margin-bottom: 20px;">
@@ -91,7 +102,9 @@
                 <% end %>
             <% end %>
         </div>
-        <div id="map" class="col-lg-4" style="min-width: 200px;height: 400px;"></div>
+        <% if @listing_list.nil? == false && @listing_list.empty? == false %>
+            <div id="map" class="col-lg-4" style="min-width: 200px;height: 400px;"></div>
+        <% end %>
             <div class="row" style="margin-top: 25px;">
                 <div class="col d-xl-flex justify-content-xl-center">
                       <%= will_paginate @listing_list %>
