@@ -1,5 +1,5 @@
 <% provide(:title, "#{@listing.listing_name}" ) %>
-<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=<%Rails.application.credentials.google[:api_key]%>&callback=initMap'></script>
+<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=<%=Rails.application.credentials.google[:api_key]%>&callback=initMap'></script>
 <script type='text/javascript'>
     function initialize() {
         var location = {lat: Number("<%= @listing.latitude %>"), lng: Number("<%= @listing.longitude %>")};
