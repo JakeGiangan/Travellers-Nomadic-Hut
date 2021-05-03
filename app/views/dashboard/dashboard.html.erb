@@ -8,37 +8,22 @@
                 <hr />
                 <h3>Current Bookings</h3>
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="card" style="background-color: #16f063;">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-xl-9">
                                         <i class="fa fa-book fa-2x d-flex justify-content-end"></i>
-                                        <h6 class="text-right text-muted">Booked Properties</h6>
+                                        <h6 class="text-right text-muted">Number of Listings</h6>
                                     </div>
                                     <div class="col">
-                                        <h1 class="text-right text-white">1</h1>
+                                        <h1 class="text-right text-white"><%= @booked %> </h1>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="card" style="background-color: #16f063;">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-xl-9">
-                                        <i class="fa fa-bookmark fa-2x d-flex justify-content-end"></i>
-                                        <h6 class="text-right text-muted">Coming Bookings</h6>
-                                    </div>
-                                    <div class="col">
-                                        <h1 class="text-right text-white">1</h1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="card"  style="background-color: #16f063;">
                             <div class="card-body">
                                 <div class="row">
@@ -47,7 +32,7 @@
                                         <h6 class="text-right text-muted">Completed Bookings</h6>
                                     </div>
                                     <div class="col">
-                                        <h1 class="text-right text-white">1</h1>
+                                        <h1 class="text-right text-white"><%= @completed %> </h1>
                                     </div>
                                 </div>
                             </div>
