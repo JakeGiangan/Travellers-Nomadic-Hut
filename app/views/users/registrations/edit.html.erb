@@ -13,13 +13,9 @@
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <div class="row fieldRowSpace" >
                 <div class="col">
-                  <%= f.label :first_name %>:
-                    <%= f.text_field :first_name, required: 'required', class: "roundedFormField col-lg-12" ,placeholder: "First Name" %>
-                </div>
-                <div class="col">
-                    <%= f.label :last_name %>:
-                    <%= f.text_field :last_name, required: 'required', class: "roundedFormField col-lg-12" ,placeholder: "Last Name" %>
-                </div>                
+                  <%= f.label :name %>:
+                    <%= f.text_field :name, required: 'required', class: "roundedFormField col-lg-12" ,placeholder: "First Name" %>
+                </div>      
                 <div class="col">
                     <%= f.label :email %> Address:
                     <%= f.email_field :email, required: 'required', class: "roundedFormField col-lg-12" ,placeholder: "Email Address" %>

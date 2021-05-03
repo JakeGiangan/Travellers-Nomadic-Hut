@@ -8,8 +8,7 @@
 
 
 user = User.new(
-  first_name: "Jake Nildo",
-  last_name: "Giangan",
+  name: "Jake Nildo Giangan",
   contact_number: 789456123,
   profile_photo: nil,
   email: "jake@email.com",
