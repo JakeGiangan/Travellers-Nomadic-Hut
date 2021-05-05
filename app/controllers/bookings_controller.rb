@@ -36,7 +36,6 @@ class BookingsController < ApplicationController
                      .select('listings.*, check_in_date, users.name, bookings.id AS book')
                      .where("listings.user_id LIKE #{current_user.id}")
                      .paginate(page: params[:page], per_page: 5)
-
     @review = Review.new
   end
 

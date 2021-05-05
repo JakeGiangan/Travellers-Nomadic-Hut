@@ -88,7 +88,18 @@
                                         </div>
                                         <div class="col">
                                             <ul>
-                                                <li>Rating</li>
+                                                <li>
+                                                    <span id="listing-stars_<%= item.listing_name %>" data-score="<%= fetch_review_score(item) %>"></span>
+                                                    <script>
+                                                        $('#listing-stars_<%= item.listing_name %>').raty({
+                                                            readOnly: true,
+                                                            score: function() {
+                                                                return $(this).attr('data-score');
+                                                            },
+                                                            path: '/assets/'
+                                                        });
+                                                    </script>
+                                                </li>
                                             </ul>
                                         </div>
                                         <div class="col-xl-1 d-xl-flex justify-content-xl-center align-items-xl-center">
