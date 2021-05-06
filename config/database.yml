@@ -16,6 +16,12 @@ default: &default
   username: root
   password: password
   host: localhost
+  
+production:
+    <<: *default
+    adapter: postgresql
+    encoding: unicode
+    pool: 5
 
 development:
   <<: *default
