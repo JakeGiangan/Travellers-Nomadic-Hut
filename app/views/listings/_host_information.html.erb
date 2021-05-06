@@ -1,0 +1,31 @@
+<div role="tabpanel" class="tab-pane fade show active" id="tab-2">
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-xl-2 d-xl-flex justify-content-xl-center align-items-xl-center">
+            <%= gravatar_for @host_details, size: 104 %>
+        </div>
+        <div class="col-xl-10">
+            <h1><%= @host_details.name %> </h1>
+            <hr />
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 150px;">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <p class="text-right">Contact Number: </p>
+                </div>
+                <div class="col">
+                    <p><%= @host_details.contact_number %></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="text-right">Email Address:</p>
+                </div>
+                <div class="col">
+                    <p><%= @host_details.email %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

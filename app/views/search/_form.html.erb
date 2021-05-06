@@ -1,0 +1,222 @@
+<div class="row">
+    <div class="col">
+        <div>
+            <%= search_form_for @search, url: search_path do |f| %>
+                <div class="collapse" id="collapse-1" style="margin-top:25px;">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <hr style="background-color: #16f063;" />
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-bottom: 15px;">
+                                            <div class="col-lg-8">
+                                                <label>Price Range</label>
+                                                <div id="slider-range"></div>
+                                                <script>
+                                                $( function() {
+                                                    $( "#slider-range" ).slider({
+                                                    range: true,
+                                                    min: 0,
+                                                    max: 3000,
+                                                    values: [ 0, 3000 ],
+                                                    slide: function( event, ui ) {
+                                                        if (ui.values[0] == ui.values[1]) {
+                                                            return false;
+                                                        }
+                                                        $("#min-price").val(ui.values[0]);
+                                                        $("#max-price").val(ui.values[1]);
+                                                    }
+                                                    });
+                                                } );
+                                                </script>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <label> Min Price </label>
+                                                <%= f.number_field :price_gteq, id: "min-price", class: "col-lg-12 roundedFormField", placeholder: "min price" %>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <label> Max Price </label>
+                                                <%= f.number_field :price_lteq, id: "max-price", class: "col-lg-12 roundedFormField", placeholder: "max price" %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <hr style="background-color: #16f063;" />
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-bottom: 15px;">
+                                            <script>
+                                                $(function() {
+                                                    $("#check_in_date").datepicker({
+                                                        numberOfMonths:1,
+                                                        dateFormat: 'yy-mm-dd',
+                                                        minDate: 0,
+                                                        maxDate: '3m',
+                                                        onSelect: function(selectedDate) {
+                                                            $("#check_out_date").datepicker("option", "minDate", selectedDate);
+                                                        }
+                                                    });
+
+                                                    $("#check_out_date").datepicker({
+                                                        numberOfMonths:1,
+                                                        dateFormat: 'yy-mm-dd',
+                                                        minDate: 0,
+                                                        maxDate: '3m',
+                                                        onSelect: function(selectedDate) {
+                                                            $("#check_in_date").datepicker("option", "maxDate", selectedDate);
+                                                        }
+                                                    });
+                                                });
+                                            </script>
+                                            <div class="col">
+                                                <%= text_field_tag :check_in_date, params[:check_in_date], id: "check_in_date", class: "form-control col-lg-10", readonly: true, placeholder: "Check In Date", style: "margin-right: 15px;margin-left: 30px;" %>
+                                            </div>
+                                            <div class="col">
+                                                <%= text_field_tag :check_out_date, params[:check_out_date], id: "check_out_date", class: "form-control col-lg-10", readonly: true, placeholder: "Check Out Date", style: "margin-right: 30px;margin-left: 15px;" %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 15px;">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <hr style="background-color: #16f063;" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-check">
+                                                    <%= check_box_tag "q[has_internet_eq]" ,true %>
+                                                    <label class="form-check-label" for="formCheck-1">Internet &amp; WiFi</label>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-check">
+                                                    <%= check_box_tag "q[has_tv_eq]" ,true %>
+                                                    <label class="form-check-label" for="formCheck-1">TV</label>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-check">
+                                                    <%= check_box_tag "q[has_kitchen_eq]" ,true %>
+                                                    <label class="form-check-label" for="formCheck-1">Kitchen</label>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-check">
+                                                    <%= check_box_tag "q[has_heating_eq]" ,true %>
+                                                    <label class="form-check-label" for="formCheck-1">Heating</label>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-check">
+                                                    <%= check_box_tag "q[has_air_conditioning_eq]", true  %>
+                                                    <label class="form-check-label" for="formCheck-1">Air Conditioner</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr style="background-color: #16f063;" />
+                                <div class="row" style="margin-top: 15px;">
+                                    <div class="col">
+                                        <h6>House Type</h6>
+                                        <div class="row">
+                                            <div class="col">
+                                                <%= f.select :home_type_eq, options_for_select([
+                                                        ["Condominium"],
+                                                        ["Resort"],
+                                                        ["Hotel"],
+                                                        ["Beach House"], 
+                                                        ["Apartment"],
+                                                        ["Capsule Room"]
+                                                    ], selected: f.object.home_type_eq), {}, class: "roundedFormField col-lg-12", :prompt => "Select Value"
+                                                %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <h6>Room Type</h6>
+                                        <div class="row">
+                                            <div class="col">
+                                                <%= f.select :room_type_eq, options_for_select([
+                                                        ["Entire"],
+                                                        ["Private"],
+                                                        ["Shared"]
+                                                    ], selected: f.object.room_type_eq), {}, class: "roundedFormField col-lg-12"
+                                                %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <h6>Bedrooms</h6>
+                                        <div class="row">
+                                            <div class="col">
+                                                <%= f.select :bedroom_count_gteq, options_for_select([
+                                                        ["1 Bedroom", 1],
+                                                        ["2 Bedrooms", 2],
+                                                        ["3 Bedrooms", 3],
+                                                        ["4+ Bedrooms", 4]
+                                                    ], selected: f.object.bedroom_count_gteq), {}, class: "roundedFormField col-lg-12", :prompt => "Select Value"
+                                                %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <h6>Bathrooms</h6>
+                                        <div class="row">
+                                            <div class="col">
+                                                <%= f.select :bathroom_count_gteq, options_for_select([
+                                                        ["1 Bathroom", 1],
+                                                        ["2 Bathrooms", 2],
+                                                        ["3 Bathrooms", 3],
+                                                        ["4+ Bathrooms", 4]
+                                                    ], selected: f.object.bathroom_count_gteq), {},  class: "roundedFormField col-lg-12"
+                                                %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <h6>Accomodation</h6>
+                                        <div class="row">
+                                            <div class="col">
+                                                <%= f.select :accomodate_gteq, options_for_select([
+                                                        ["1 Guest", 1],
+                                                        ["2 Guests", 2],
+                                                        ["3 Guests", 3],
+                                                        ["4+ Guests", 4]
+                                                    ], selected: f.object.accomodate_gteq), {}, class: "roundedFormField col-lg-12"
+                                                %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <hr style="background-color: #16f063;" />
+                                        <div class="row">
+                                            <div class="col d-xl-flex justify-content-xl-center">
+                                                <%= f.submit "Filter", class: "btn btn-primary d-xl-flex justify-content-xl-center", style: 'margin-right: 15px;' %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+

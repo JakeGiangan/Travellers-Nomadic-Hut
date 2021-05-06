@@ -1,0 +1,71 @@
+<% provide(:title, "Home") %>
+<div class="parallax">
+    <div class="caption">
+        <span class="text-white"><h1 class="MontserratFont">Travelling and Living <br/> made Simple and Elegant </h1></span>
+    </div>
+</div>
+
+
+<div class="col-lg-12 d-flex justify-content-center callToAction">
+    <%= form_tag search_path, :method => :get do %>
+        <div class="row d-flex justify-content-center">
+            <%= text_field_tag :search, params[:search], class: "col-lg-6 roundedFormField", placeholder: "Location Address", style: "margin-top: 40px; margin-bottom: 15px;" %>
+            <%= text_field_tag :check_in_date, params[:check_in_date], id: "check_in_date", class: "form-control col-lg-2", readonly: true, placeholder: "Check In Date", style: "margin-top: 40px; margin-bottom: 15px; margin-right: 15px;margin-left: 30px;" %>
+            <%= text_field_tag :check_out_date, params[:check_out_date], id: "check_out_date", class: "form-control col-lg-2", readonly: true, placeholder: "Check Out Date", style: "margin-top: 40px; margin-bottom: 15px; margin-right: 30px;margin-left: 15px;" , disabled: true %>
+
+            <%= submit_tag "Lets find a place to stay...", class: "btn roundedGreenButton callToActionButton" %>
+        </div>
+        <script>
+            $(function() {
+                $("#check_in_date").datepicker({
+                    numberOfMonths:1,
+                    dateFormat: 'yy-mm-dd',
+                    minDate: 0,
+                    maxDate: '3m',
+                    onSelect: function(selectedDate) {
+                        $("#check_out_date").datepicker("option", "minDate", selectedDate);
+                        $('#check_out_date').attr("disabled", false);
+                    }
+                });
+
+                $("#check_out_date").datepicker({
+                    numberOfMonths:1,
+                    dateFormat: 'yy-mm-dd',
+                    minDate: 0,
+                    maxDate: '3m',
+                    onSelect: function(selectedDate) {
+                        $("#check_in_date").datepicker("option", "maxDate", selectedDate);
+                    }
+                });
+            });
+        </script>
+    <% end %>
+</div>
+
+<div class="container-fluid">
+    <div class="offset-lg-2">
+        <div class="row" style="margin-bottom: 50px;">
+            <div class="col col-lg-5">
+            <h1 style="margin-top: 50px;">Home Gallery</h1>
+            <hr style="background-color: #16f063;height: 15px; width:500px;margin-left: 0px;" />
+            <div class="row" style="margin-top: 125px">
+                <div class="col">
+                    <%= image_tag('home/1.jpg', class:'firstImage')%>
+                </div>
+            </div>
+            </div>
+            <div class="col col-lg-5">
+                <div class="row">
+                    <div class="col">
+                        <%= image_tag('home/2.jpg', class:'secondImage') %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <%= image_tag('home/3.jpg', class:'thirdImage') %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

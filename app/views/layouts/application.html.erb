@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TravellersNomadicHut</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <head>
+    <title><%= yield(:title) %> | Travellers Nomadic Hut</title>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css">
+    </head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-  <%= render 'layouts/header' %>
+    <body>
+    <%= render 'layouts/header' %>
+        <% flash.each do |key, value| %>
+            <div class="fixed-top d-flex justify-content-center">
+                <div class="alert <% if key == 'notice' %> alert-success <% else %> alert-warning <% end %> alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <%= value %>
+                </div>
+            </div>
+        <% end %>
     <%= yield %>
-  <%= render 'layouts/footer' %>
-  </body>
+    <%= render 'layouts/footer' %>
+    </body>
 </html>

@@ -1,0 +1,42 @@
+<% provide(:title, "Listing Photos") %>
+<div class="container" style="margin-top: 100px;">
+    <div class="row">
+        <%= render'sidebar' %>
+        <div class="col-xl-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Photos</h5>
+                </div>
+                <div class="card-body">
+                <%= form_for @listing, url: listing_images_path(@listing), method: "post", html: { :multipart => true }, enctype: 'multipart/form-data' do |f| %>
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col">
+                            <%= file_field_tag "images[]", type: :file, multiple: true, required: true, accept: "image/jpeg,image/gif,image/png" %>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 20px;">
+
+                    <% @images.each do |image| %>
+                        <div class="col col-lg-4" style="padding-top: 30px; padding-bottomo: 30px;">
+                            <div class="card mt-4">
+                                <div class="card-img-top-preview"> 
+                                    <%= image_tag image.image, class: "img mw-100" %>
+                                </div>
+                                <div class="card-text">
+                                    <%= link_to raw("<i class=' fa fa-trash text-danger'></i>&nbsp;Delete image"), listing_image_path(@listing, image), method: :delete, class: "float-right mr-3 my-3 text-danger MontserratFont" %>
+                                </div>
+                            </div>                            
+                        </div>
+                    <% end %>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <%= f.submit "Save", class: "btn btn-primary col-lg-12 roundedButton" %>
+                        </div>
+                    </div>
+                <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

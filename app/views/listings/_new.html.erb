@@ -1,0 +1,67 @@
+<div id="newListingModal" role="dialog" tabindex="-1" class="modal fade text-left show" style="margin-top: 20px;">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add a new Listing</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <%= form_for(@listing) do |f|  %>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="col-lg-4">
+                            <%= f.hidden_field :user_id, value: user_signed_in? ? current_user.id : nil %>
+                            <%= f.text_field :listing_name, required: 'required', class: "roundedFormField col-lg-12" ,placeholder: "Property Name" %>
+                        </div>
+                        <div class="col-lg-4">
+                            <%= f.select :home_type, options_for_select([
+                                ["Condominium"],
+                                ["Resort"],
+                                ["Hotel"],
+                                ["Beach House"], 
+                                ["Apartment"],
+                                ["Capsule Room"]
+                            ]), {}, class: "roundedFormField col-lg-12" %>
+                        </div>
+                        <div class="col-lg-4">
+                            <%= f.select :room_type, options_for_select([
+                                ["Entire"],
+                                ["Private"],
+                                ["Shared"]
+                            ]), {}, class: "roundedFormField col-lg-12" %>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="col-lg-4">
+                            <%= f.select :accomodate, options_for_select([
+                                ["1 Guest", 1],
+                                ["2 Guests", 2],
+                                ["3 Guests", 3],
+                                ["4+ Guests", 4]
+                            ]), {}, class: "roundedFormField col-lg-12" %>
+                        </div>
+                        <div class="col-lg-4">
+                            <%= f.select :bedroom_count, options_for_select([
+                                ["1 Bedroom", 1],
+                                ["2 Bedrooms", 2],
+                                ["3 Bedrooms", 3],
+                                ["4+ Bedrooms", 4]
+                            ]), {},  class: "roundedFormField col-lg-12" %>
+                        </div>
+                        <div class="col-lg-4">
+                             <%= f.select :bathroom_count, options_for_select([
+                                ["1 Bathroom", 1],
+                                ["2 Bathrooms", 2],
+                                ["3 Bathrooms", 3],
+                                ["4+ Bathrooms", 4]
+                            ]), {},  class: "roundedFormField col-lg-12" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <%= f.submit "Submit", class: "btn btn-outline-success roundedButton", style: "margin-right: 20px;" %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>

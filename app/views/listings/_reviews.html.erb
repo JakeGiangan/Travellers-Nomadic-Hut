@@ -1,0 +1,50 @@
+<div role="tabpanel" class="tab-pane fade show active" id="tab-4">
+    <div class="row" style="margin-top: 30px;">
+        <div class="col">
+            <h2 style="margin-bottom: 15px;"><%= pluralize(@listing_reviews.count, "Review", ) %>: <span id="review-average" data-score="<%= @review_average %>"></span> </h2>
+            <script>
+                $('#review-average').raty({
+                    readOnly: true,
+                    score: function() {
+                    return $(this).attr('data-score');
+                    },
+                    path: '/assets/'
+                });
+            </script>
+            <% @listing_reviews.each do |reviewItem| %>
+            <div class="card" style="margin-bottom: 15px;">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h4><%= reviewItem.user.name %></h4>
+                            <hr>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="review-<%= reviewItem.id%> text-right" data-score="<%= reviewItem.rating %>"></div>
+                            <script>
+                                $('.review-<%= reviewItem.id%>').raty({
+                                    readOnly: true,
+                                    score: function() {
+                                    return $(this).attr('data-score');
+                                    },
+                                    path: '/assets/'
+                                });
+                            </script>
+                            <p class="text-right"><%= reviewItem.created_at.strftime("%B %d, %Y") %></p>
+                        </div>
+                    </div>
+                    <p class="card-text">
+                        <%= reviewItem.content %>
+                    </p>
+                </div>
+            </div>
+            <% end %>
+            <% if @listing_reviews.present? == false %>
+                <p> No reviews Found </p>
+            <% end %>
+            <nav class="d-xl-flex justify-content-xl-center" style="margin-top: 50px;margin-bottom: 100px;">
+                <%= will_paginate @listing_reviews %>
+            </nav>
+        </div>
+    </div>
+</div>

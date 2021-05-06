@@ -6,11 +6,30 @@ ruby '2.6.6'
 gem 'bootstrap', '~> 4.5.3'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
+gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
+
+gem 'will_paginate', '~> 3.2', '>= 3.2.1'
+gem 'will_paginate-bootstrap4', '~> 0.2.2'
+
+gem 'ransack', '~> 2.0'
+gem 'jquery-ui-rails', '~> 5.0'
+
+gem 'geocoder', '~> 1.4'
+
+gem 'omniauth', "~> 1.9.1"
+
+gem 'omniauth-facebook'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+group :development do
+  gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+end
+
+group :production do
+  gem 'pg'
+end
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -28,10 +47,10 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+#gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+  gem 'mini_magick', '~> 4.9.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
