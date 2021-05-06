@@ -8,7 +8,7 @@ class UsersController < ApplicationController
                   .joins('JOIN bookings ON listings.id = bookings.listing_id')
                   .joins('JOIN users ON users.id = listings.user_id')
                   .select('listings.*, check_in_date, users.name, bookings.id AS book')
-                  .where("bookings.user_id LIKE #{current_user.id}")
+                  .where("bookings.user_id = #{current_user.id}")
                   .paginate(page: params[:page], per_page: 5)
 
     @listing_list = Listing.where(user_id: current_user.id).paginate(page: params[:page], per_page: 3)
