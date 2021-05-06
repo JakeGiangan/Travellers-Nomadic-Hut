@@ -24,7 +24,7 @@
                             </p>
                         </div>
                         <div class="col d-xl-flex align-items-xl-center">
-                            <div id="postHostReview_<%=item.id%>" role="dialog" tabindex="-1" class="modal fade show">
+                            <div id="postHostReview_<%=item.book%>" role="dialog" tabindex="-1" class="modal fade show">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -32,11 +32,12 @@
                                             <%= form_for(@review) do |f| %>
                                                 <div class="modal-body">
                                                     <%= f.hidden_field :booking_id, value: item.book %>
-                                                    <div id="stars_<%= item.id %>" class="d-xl-flex justify-content-xl-center" style="margin-bottom: 30px;"></div>
+                                                    <div id="stars_<%= item.id %>_<%= item.check_in_date %>" class="d-xl-flex justify-content-xl-center" style="margin-bottom: 30px;"></div>
                                                     <script>
-                                                    $('#stars_<%= item.id %>').raty({
+                                                    $('#stars_<%= item.id %>_<%= item.check_in_date %>').raty({
                                                         path: 'assets',
-                                                        scoreName: 'review[rating]'
+                                                        scoreName: 'review[rating]',
+                                                        score: 1
                                                     });
                                                     </script>
                                                     <%= f.text_area :content, class: "col-lg-12" %>
@@ -50,7 +51,7 @@
                                     </div>
                                 </div>
                             <% if check_for_review(current_user.id, item.book) == false %>
-                            <button class="btn btn-primary col-lg-12 roundedButton" type="button" data-toggle="modal" data-target="#postHostReview_<%= item.id %>" >Review Host</button>
+                            <button class="btn btn-primary col-lg-12 roundedButton" type="button" data-toggle="modal" data-target="#postHostReview_<%= item.book %>" >Review Host</button>
                             <% end %>
                         </div>
                     </div>

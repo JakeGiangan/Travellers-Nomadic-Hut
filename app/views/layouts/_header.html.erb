@@ -15,6 +15,8 @@
                     <%= link_to raw("<i class='fa fa-user-circle'></i> Profile"), user_path(current_user.id), class: "dropdown-item"%>
                     <div class="dropdown-divider"></div>
                     <%= link_to raw("<i class='fa fa-tachometer-alt'></i> Hosting Dashboard"), hosting_dashboard_url, class: "dropdown-item"%>
+                    <%= link_to raw("<i class='fa fa-home'></i> Your Listings"), listings_url, class: "dropdown-item"%>
+                    <%= link_to raw("<i class='fa fa-book'></i> Your Bookings"), bookings_url, class: "dropdown-item"%>
                     <div class="dropdown-divider"></div>
                     <%= link_to raw("<i class='fa fa-sign-out-alt'></i> Logout"), destroy_user_session_path, class: "dropdown-item", method: :delete %>
                 <% else %>
@@ -30,7 +32,7 @@
     <nav class="navbar navigationItems justify-content-between">
         <%= link_to raw(" Home"), root_url, class: "nav-item nav-link text-dark headerItem" %>
         <%= link_to raw("Host your home"), listings_url, class: "nav-item nav-link text-dark headerItem"%>
-        <a class="nav-item nav-link text-dark headerItem" href="#">About Us</a>
-        <a class="nav-item nav-link text-dark headerItem" href="#">Contact Us</a>
+        <%= link_to raw("About Us"), about_us_url, class: "nav-item nav-link text-dark headerItem"%>
+        <%= link_to raw("Contact Us"), contact_us_url, class: "nav-item nav-link text-dark headerItem"%>
     </nav>
 </div>
