@@ -6,7 +6,7 @@ ruby '2.6.6'
 gem 'bootstrap', '~> 4.5.3'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
-gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
+gem 'devise', github: 'heartcombo/devise'
 
 gem 'will_paginate', '~> 3.2', '>= 3.2.1'
 gem 'will_paginate-bootstrap4', '~> 0.2.2'
