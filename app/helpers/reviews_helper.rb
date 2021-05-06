@@ -11,6 +11,6 @@ module ReviewsHelper
     Review
     .where("bookings.listing_id like #{listing.id} and reviews.user_id != #{listing.user_id}")
     .joins('JOIN bookings ON reviews.booking_id = bookings.id')
-    .pluck('avg(rating)')
+    .pluck('AVG(rating)')
   end
 end

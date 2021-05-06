@@ -19,7 +19,7 @@ class SearchController < ApplicationController
                       .joins('JOIN users ON users.id = reviews.user_id')
                       .where(id: @search.ids)
                       .where.not(user_id:current_user.id)
-                      .pluck('avg(rating)')
+                      .pluck('AVG(rating)')
       @search = @search.ransack(params[:q])
       @listing_list = @search.result(distinct: true).paginate(page: params[:page], per_page: 2)
     end  
