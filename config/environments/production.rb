@@ -94,11 +94,11 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "localhost:3000" }
+  config.action_mailer.default_url_options = { host: "https://airbnb-jake.herokuapp.com/" }
   config.action_mailer.smtp_settings = {
     :user_name => 'apikey',
     :password => Rails.application.credentials.sendgrid[:password],
-    :domain => 'http://localhost:3000/',
+    :domain => 'https://airbnb-jake.herokuapp.com/',
     :address => 'smtp.sendgrid.net',
     :port => 465,
     :authentication => :plain,
