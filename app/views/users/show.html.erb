@@ -2,43 +2,100 @@
 
 <div class="container MontserratFont" style="margin-top: 100px; margin-bottom: 100px">
     <div class="col">
-        <div class="row">
-            <div class="col-xl-2">
-                <div class="row">
-                    <div class="col d-xl-flex justify-content-xl-center align-items-xl-center">
-                        <%= gravatar_for @user, size: 150 %>
+        <div class="d-none d-lg-block">
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <div class="row">
+                        <div class="col d-flex justify-content-center align-items-center">
+                            <%= gravatar_for @user, size: 150 %>
+                        </div>
+                    </div>
+                    <div class="row my-3">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Facebook</th>
+                                    <td><% if @user.provider == 'facebook' %><i class="fa fa-check-circle text-success"></i><%else%><i class="fa fa-times-circle text-danger"></i> <% end %></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Phone Number</th>
+                                    <td><% unless @user.contact_number.nil? %><i class="fa fa-check-circle text-success"></i><%else%><i class="fa fa-times-circle text-danger"></i><% end %></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="row my-3">
-                    <div class="col-lg-10">
-                        <p>Facebook</p>
-                        <p>Phone Number</p>
+                <div class="col-lg-10 col-md-10">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <h1 class="col-lg-12 col-md-12 mx-3"><%= @user.name %></h1>
+                            <hr />
+                        </div>
                     </div>
-                    <div class="col=lg-1">
-                        <p><% if @user.provider == 'facebook' %><i class="fa fa-check-circle text-success"></i><%else%><i class="fa fa-times-circle text-danger"></i> <% end %></p>
-                        <p><% unless @user.contact_number.nil? %><i class="fa fa-check-circle text-success"></i><%else%><i class="fa fa-times-circle text-danger"></i><% end %></p>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <p class="text-right"><strong>Email:</strong>&nbsp;<%= @user.email %></p>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <p><strong>Contact Number:</strong>&nbsp;<%= @user.contact_number %></p>
+                        </div>
                     </div>
+                    <div class="row mt-4">
+                        <div class="col d-flex justify-content-end">
+                            <%= link_to raw("<i class='fa fa-pen'></i>&nbsp;Edit Profile"), edit_user_registration_url(@user), class: "btn btn-outline-info roundedButton", style: "margin-right: 10px;"  %>
+                            <%= link_to raw("<i class='fa fa-trash'></i>&nbsp;Delete Account"), registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger roundedButton" %></p>
+                        </div>
                     </div>
+                </div>
             </div>
-            <div class="col">
-                <div class="row">
-                    <div class="col">
-                        <h1><%= @user.name %></h1>
-                        <hr />
+        </div>
+
+        <div class="d-lg-none">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="row">                    
+                        <div class="col d-flex justify-content-center align-items-center">
+                            <%= gravatar_for @user, size: 150 %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-center">
+                            <h1 class="text-center my-3"><%= @user.name %></h1>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <p class="text-right"><strong>Email:</strong>&nbsp;<%= @user.email %></p>
-                    </div>
-                    <div class="col">
-                        <p><strong>Contact Number:</strong>&nbsp;<%= @user.contact_number %></p>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-2 col-xs-2">
+                    <div class="row">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Facebook</th>
+                                    <td><% if @user.provider == 'facebook' %><i class="fa fa-check-circle text-success"></i><%else%><i class="fa fa-times-circle text-danger"></i> <% end %></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Phone Number</th>
+                                    <td><% unless @user.contact_number.nil? %><i class="fa fa-check-circle text-success"></i><%else%><i class="fa fa-times-circle text-danger"></i><% end %></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="row mt-4">
-                    <div class="col d-xl-flex justify-content-xl-end">
-                        <%= link_to raw("<i class='fa fa-pen'></i> Edit Profile"), edit_user_registration_url(@user), class: "btn btn-outline-info roundedButton", style: "margin-right: 10px;"  %>
-                        <%= link_to raw("<i class='fa fa-trash'></i>  Delete Account"), registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger roundedButton" %></p>
+                <div class="col-sm-10 col-xs-10">                    
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <p class="text-right text-break"><strong>Email:</strong><br/><%= @user.email %></p>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <p class="text-right text-break"><strong>Contact Number:</strong><br/><%= @user.contact_number %></p>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col d-flex justify-content-end">
+                            <%= link_to raw("<i class='fa fa-pen'></i>&nbsp;Edit Profile"), edit_user_registration_url(@user), class: "btn btn-outline-info roundedButton", style: "margin-right: 10px;"  %>
+                            <%= link_to raw("<i class='fa fa-trash'></i>&nbsp;Delete Profile"), registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-outline-danger roundedButton" %></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,43 +104,89 @@
             <div class="col">
                 <h4>Listings (<%= @listing_list.count %>)</h4>
                 <hr />
-                <div class="row">
-                    <div class="col">
-                        <div class="card-group">
-                        <% @listing_list.each do |listing_item| %>
-                            <div class="col-lg-3">
-                                <div class="card">
-                                    <% if listing_item.images.present? %>
-                                        <%= link_to image_tag(listing_item.images.first.image, class: "card-img-top w-100 d-block", style: "height: 200px;" ), listing_item%>
-                                    <% else %>
-                                        <p> No image found </p>
-                                    <% end %>                                
-                                    <div class="card-body">
-                                        <h4 class="card-title"><%= link_to listing_item.listing_name, listing_item %></h4>
-                                        <p class="card-text">$<%= listing_item.price %> - <%= listing_item.home_type %> - <%= listing_item.accomodate %></p>
-                                        <p class="card-text">
-                                            <span id="listing-reviews-average-stars-<%= listing_item.listing_name %>" class="d-xl-flex justify-content-xl-center" data-score="<%= fetch_review_score(listing_item) %>"></span>
-                                            <script>
-                                                $('#listing-reviews-average-stars-<%= listing_item.listing_name %>').raty({
-                                                    readOnly: true,
-                                                    score: function() {
-                                                        return $(this).attr('data-score');
-                                                    },
-                                                    path: '/assets/'
-                                                });
-                                            </script>
-                                        </p>
-                                        <p class="card-text d-xl-flex justify-content-xl-center"><%= pluralize(fetch_reviews(listing_item).size, "Review", ) %></p>
+                <div class="d-none d-lg-block">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card-group">
+                            <% @listing_list.each do |listing_item| %>
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="card">
+                                        <% if listing_item.images.present? %>
+                                            <%= link_to image_tag(listing_item.images.first.image, class: "card-img-top w-100 d-block", style: "height: 200px;" ), listing_item%>
+                                        <% else %>
+                                            <p> No image found </p>
+                                        <% end %>                                
+                                        <div class="card-body">
+                                            <h4 class="card-title"><%= link_to listing_item.listing_name, listing_item %></h4>
+                                            <p class="card-text">$<%= listing_item.price %> - <%= listing_item.home_type %> - <%= listing_item.accomodate %></p>
+                                            <p class="card-text">
+                                                <span id="listing-reviews-average-stars-<%= listing_item.listing_name %>" class="d-flex justify-content-center" data-score="<%= fetch_review_score(listing_item) %>"></span>
+                                                <script>
+                                                    $('#listing-reviews-average-stars-<%= listing_item.listing_name %>').raty({
+                                                        readOnly: true,
+                                                        score: function() {
+                                                            return $(this).attr('data-score');
+                                                        },
+                                                        path: '/assets/'
+                                                    });
+                                                </script>
+                                            </p>
+                                            <p class="card-text d-flex justify-content-center"><%= pluralize(fetch_reviews(listing_item).size, "Review", ) %></p>
+                                        </div>
                                     </div>
                                 </div>
+                            <% end %>
                             </div>
-                        <% end %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-center" style="margin-top: 25px;margin-bottom: 25px;">
+                        <%= will_paginate @listing_list %>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col d-xl-flex justify-content-xl-center" style="margin-top: 25px;margin-bottom: 25px;">
-                    <%= will_paginate @listing_list %>
+
+                <div class="d-lg-none">
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                            <div class="row">
+                                <div class="card-group">
+                                    <% @listing_list.each do |listing_item| %>
+                                        <div class="col-sm-4 col-xs-4">
+                                            <div class="card">
+                                                <% if listing_item.images.present? %>
+                                                    <%= link_to image_tag(listing_item.images.first.image, class: "card-img-top w-100 d-block", style: "height: 200px;" ), listing_item%>
+                                                <% else %>
+                                                    <p> No image found </p>
+                                                <% end %>                                
+                                                <div class="card-body">
+                                                    <h4 class="card-title"><%= link_to listing_item.listing_name, listing_item %></h4>
+                                                    <p class="card-text">$<%= listing_item.price %> - <%= listing_item.home_type %> - <%= listing_item.accomodate %></p>
+                                                    <p class="card-text">
+                                                        <span id="listing-reviews-average-mobile-stars-<%= listing_item.id %>-<%= listing_item.listing_name %>" class="d-flex justify-content-center" data-score="<%= fetch_review_score(listing_item) %>"></span>
+                                                        <script>
+                                                            $('#listing-reviews-average-mobile-stars-<%= listing_item.id %>-<%= listing_item.listing_name %>').raty({
+                                                                readOnly: true,
+                                                                score: function() {
+                                                                    return $(this).attr('data-score');
+                                                                },
+                                                                path: '/assets/'
+                                                            });
+                                                        </script>
+                                                    </p>
+                                                    <p class="card-text d-flex justify-content-center"><%= pluralize(fetch_reviews(listing_item).size, "Review", ) %></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-center" style="margin-top: 25px;margin-bottom: 25px;">
+                        <%= will_paginate @listing_list %>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -92,15 +195,15 @@
             <div class="col">
             <hr />
                 <div>
-                    <ul class="nav nav-pills d-xl-flex justify-content-xl-center my-5">
-                        <li class="nav-item mr-4"><a role="tab" data-toggle="pill" class="nav-link active" href="#tab-1">Reviews from Guests</a></li>
-                        <li class="nav-item ml-4"><a role="tab" data-toggle="pill" class="nav-link" href="#tab-2">Reviews from Host</a></li>
+                    <ul class="nav nav-pills d-flex justify-content-center my-5">
+                        <li class="nav-item mr-4"><a role="tab" data-toggle="pill" class="nav-link active" href="#tab-1">Reviews from Host</a></li>
+                        <li class="nav-item ml-4"><a role="tab" data-toggle="pill" class="nav-link" href="#tab-2">Reviews from User</a></li>
                     </ul>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="tab-1">
                             <div class="row">
                                 <div class="col">
-                                    <h4>Reviews from Guests (<%= @guest_reviews.size %>)</h4>
+                                    <h4>Reviews from Hosts (<%= @guest_reviews.size %>)</h4>
                                     <hr />
                                 </div>
                             </div>
@@ -111,7 +214,7 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                    <div class="col">
-                                                        <p class="d-xl-flex justify-content-xl-center align-items-xl-center">No listings found </p>
+                                                        <p class="d-flex justify-content-center align-items-center">No listings found </p>
                                                    </div>
                                                 </div>
                                             </div>
@@ -121,9 +224,9 @@
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        <div class="col-xl-2">
+                                                        <div class="col-2">
                                                             <div class="row">
-                                                                <div class="col d-xl-flex justify-content-xl-center align-items-xl-center">
+                                                                <div class="col d-flex justify-content-center align-items-center">
                                                                     <%= gravatar_for guest_review_item.user, size: 60 %>
                                                                 </div>
                                                             </div>
@@ -161,7 +264,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col d-xl-flex justify-content-xl-center">
+                                <div class="col d-flex justify-content-center">
                                    <%= will_paginate @guest_reviews %>
                                 </div>
                             </div>
@@ -169,7 +272,7 @@
                         <div role="tabpanel" class="tab-pane" id="tab-2">
                             <div class="row">
                                 <div class="col">
-                                    <h4>Reviews from Hosts (<%= @host_reviews.size %>)</h4>
+                                    <h4>Reviews from User (<%= @host_reviews.size %>)</h4>
                                     <hr />
                                 </div>
                             </div>
@@ -180,7 +283,7 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                    <div class="col">
-                                                        <p class="d-xl-flex justify-content-xl-center align-items-xl-center">No listings found </p>
+                                                        <p class="d-flex justify-content-center align-items-center">No listings found </p>
                                                    </div>
                                                 </div>
                                             </div>
@@ -190,9 +293,9 @@
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        <div class="col-xl-2">
+                                                        <div class="col-2">
                                                             <div class="row">
-                                                                <div class="col d-xl-flex justify-content-xl-center align-items-xl-center">
+                                                                <div class="col d-flex justify-content-center align-items-center">
                                                                     <%= gravatar_for host_review_item.user, size: 60 %>
                                                                 </div>
                                                             </div>
@@ -228,7 +331,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col d-xl-flex justify-content-xl-center">
+                                <div class="col d-flex justify-content-center">
                                     <%= will_paginate @host_reviews %>
                                 </div>
                             </div>

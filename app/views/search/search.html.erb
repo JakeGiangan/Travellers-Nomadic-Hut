@@ -60,50 +60,48 @@
                 </p>
             <% else %>
                 <% @listing_list.each do |item| %>
-                    <div class="card" style="margin-bottom: 20px;">
-                        <div class="card-body">
-                            <div class="row ">
-                                <div class="col-xl-3">
-                                    <div style="background-image: url(<%= url_for(item.images.first.image) %>);
-                                                height: 120px;
-                                                width: 170px;
-                                                background-size: cover;
-                                                background-position: center;"
-                                    >
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="row">
-                                        <div class="col">
-                                            <h6><%= link_to item.listing_name, item, class:"text-dark" %></h6>
-                                            <hr style="background-color: #16f063;" />
+                    <div class="d-none d-lg-block">
+                        <div class="card" style="margin-bottom: 20px;">
+                            <div class="card-body">
+                                <div class="row ">
+                                    <div class="col-xl-3">
+                                        <div style="background-image: url(<%= url_for(item.images.first.image) %>);
+                                                    height: 120px;
+                                                    width: 170px;
+                                                    background-size: cover;
+                                                    background-position: center;"
+                                        >
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <ul>
-                                                <li><%= item.address %></li>
-                                                <li>$&nbsp;<%= item.price %></li>
-                                            </ul>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h6><%= link_to item.listing_name, item, class:"text-dark" %></h6>
+                                                <hr style="background-color: #16f063;" />
+                                            </div>
                                         </div>
-                                        <div class="col">
-                                            <ul>
-                                                <li>
-                                                    <span id="listing-stars_<%= item.listing_name %>" data-score="<%= fetch_review_score(item) %>"></span>
-                                                    <script>
-                                                        $('#listing-stars_<%= item.listing_name %>').raty({
-                                                            readOnly: true,
-                                                            score: function() {
-                                                                return $(this).attr('data-score');
-                                                            },
-                                                            path: '/assets/'
-                                                        });
-                                                    </script>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-xl-1 d-xl-flex justify-content-xl-center align-items-xl-center">
-                                            <%= link_to raw("<i class='fa fa-chevron-right text-info'></i>"), item %>
+                                        <div class="row">
+                                            <div class="col">
+                                                <ul>
+                                                    <li><%= item.address %></li>
+                                                    <li>$&nbsp;<%= item.price %></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col">
+                                                <span class="search-listing-stars-<%= item.id %>" data-score="<%= fetch_review_score(item) %>"></span>
+                                                <script>
+                                                    $('.search-listing-stars-<%= item.id %>').raty({
+                                                        readOnly: true,
+                                                        score: function() {
+                                                            return $(this).attr('data-score');
+                                                        },
+                                                        path: '/assets/'
+                                                    });
+                                                </script>
+                                            </div>
+                                            <div class="col-xl-1 d-xl-flex justify-content-xl-center align-items-xl-center">
+                                                <%= link_to raw("<i class='fa fa-chevron-right text-info'></i>"), item %>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -111,14 +109,59 @@
                         </div>
                     </div>
                 <% end %>
+                <div class="d-lg-none">
+                    <div class="row offset-sm-1">
+                        <% @listing_list.each do |item| %>
+                            <div class="col-sm-5 col-xs-5">
+                                <div class="card my-3">
+                                    <%= link_to image_tag(item.images.first.image, class: "card-img-top"), listing_path(item.id) %>
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center"><%= link_to item.listing_name, item %></h5>
+                                        <hr style="background-color: #16f063;" />
+                                        <p class="card-text">
+                                            <div class="col">
+                                                <ul>
+                                                    <li><%= item.address %></li>
+                                                    <li>$&nbsp;<%= item.price %></li>
+                                                </ul>
+                                                <div class="d-flex justify-content-center">
+                                                    <span class="search-listing-stars-mobile-<%= item.id %>" data-score="<%= fetch_review_score(item) %>"></span>
+                                                    <script>
+                                                        $('.search-listing-stars-mobile-<%= item.id %>').raty({
+                                                            readOnly: true,
+                                                            score: function() {
+                                                                return $(this).attr('data-score');
+                                                            },
+                                                            path: '/assets/'
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                    <div class="row my-3">
+                        <div class="col d-flex justify-content-center">
+                            <%= will_paginate @listing_list %>
+                        </div>
+                    </div>
+                </div>
             <% end %>
         </div>
         <% if @listing_list.nil? == false && @listing_list.empty? == false %>
-            <div id="map" class="col-lg-4" style="min-width: 200px;height: 400px;"></div>
+            <div class="col-lg-4">
+                <div id="map" style="min-width: 200px;height: 400px;"></div>
+            </div>
         <% end %>
-            <div class="row" style="margin-top: 25px;">
-                <div class="col d-xl-flex justify-content-xl-center">
-                      <%= will_paginate @listing_list %>
+
+            <div class="d-none d-lg-block">
+                <div class="row" style="margin-top: 25px;">
+                    <div class="col d-xl-flex justify-content-xl-center">
+                        <%= will_paginate @listing_list %>
+                    </div>
                 </div>
             </div>
         </div>

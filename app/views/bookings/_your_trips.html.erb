@@ -7,23 +7,23 @@
             <div class="card-body">
                 <% @user_trips.each do |item| %>
                     <div class="row" style="margin-bottom: 15px;">
-                        <div class="col-xl-2 d-xl-flex align-items-xl-center">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 d-flex align-items-center">
                             <p><%= item.check_in_date.strftime("%B %d, %Y") %></p>
                         </div>
-                        <div class="col-xl-2">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                         <% if item.images.present? %>
                             <%= link_to image_tag(item.images.first.image, size: "120x80"), listing_path(item.id) %>
                         <% else %>
                             <p> No image found </p>
                         <% end %>
                         </div>
-                        <div class="col d-xl-flex align-items-xl-center">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 d-flex align-items-center">
                             <p>
                                 <%= link_to item.listing_name, listing_path(item.id)%>
                                 <br /><%= item.name %>
                             </p>
                         </div>
-                        <div class="col d-xl-flex align-items-xl-center">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 d-flex align-items-center">
                             <div id="postHostReview_<%=item.book%>" role="dialog" tabindex="-1" class="modal fade show">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -32,7 +32,7 @@
                                             <%= form_for(@review) do |f| %>
                                                 <div class="modal-body">
                                                     <%= f.hidden_field :booking_id, value: item.book %>
-                                                    <div id="stars_<%= item.id %>_<%= item.check_in_date %>" class="d-xl-flex justify-content-xl-center" style="margin-bottom: 30px;"></div>
+                                                    <div id="stars_<%= item.id %>_<%= item.check_in_date %>" class="d-flex justify-content-center" style="margin-bottom: 30px;"></div>
                                                     <script>
                                                     $('#stars_<%= item.id %>_<%= item.check_in_date %>').raty({
                                                         path: 'assets',
@@ -57,7 +57,7 @@
                     </div>
                 <% end %>                
                 <div class="row">
-                    <div class="col d-xl-flex justify-content-xl-center" style="margin-top: 15px;">
+                    <div class="col d-flex justify-content-center" style="margin-top: 15px;">
                         <nav>
                             <%= will_paginate @user_trips %>
                         </nav>

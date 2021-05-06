@@ -5,7 +5,7 @@ class ListingsController < ApplicationController
 
   def index
     @listing = Listing.new
-    @listing_list = Listing.where(user_id: current_user.id).paginate(page: params[:page], per_page: 3)
+    @listing_list = Listing.where(user_id: current_user.id).paginate(page: params[:page], per_page: 4)
   end
 
   def show

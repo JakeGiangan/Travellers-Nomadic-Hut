@@ -29,6 +29,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'aws-sdk'
 end
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

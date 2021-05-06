@@ -1,14 +1,15 @@
 <div class="sticky-top">
+    <div class="d-none d-lg-block">
     <nav class="navbar header justify-content-between">
     <div class='offset-lg-2 offset-md-2'>
-        <a class="navbar-brand text-white MontserratFont">Traveller's Nomadic Hut</a>
+        <a class="navbar-brand text-white MontserratFont"><i class="fa fa-home"></i>&nbsp;Traveller's Nomadic Hut</a>
     </div>
 
     <div class="pull-right col-lg-2 col-md-2 col-xs-4">
         <div class="dropdown">
         <button class="headerDropdown" data-toggle="dropdown" aria-expanded="false">
-            <i class='fa fa-bars'> </i> &nbsp;
-            <i class='fa fa-user-circle'> </i>
+            <i class='fa fa-bars ml-2 my-2'> </i> &nbsp;
+            <i class='fa fa-user-circle mr-2 my-2'> </i>
         </button>
             <div role="menu" class="dropdown-menu">
                 <% if user_signed_in? %>
@@ -28,11 +29,28 @@
         </div>
     </div>
     </nav>
-    
-    <nav class="navbar navigationItems justify-content-between">
-        <%= link_to raw(" Home"), root_url, class: "nav-item nav-link text-dark headerItem" %>
-        <%= link_to raw("Host your home"), listings_url, class: "nav-item nav-link text-dark headerItem"%>
-        <%= link_to raw("About Us"), about_us_url, class: "nav-item nav-link text-dark headerItem"%>
-        <%= link_to raw("Contact Us"), contact_us_url, class: "nav-item nav-link text-dark headerItem"%>
+
+        <nav class="navbar navigationItems justify-content-between">
+            <%= link_to raw(" Home"), root_url, class: "nav-item nav-link text-dark headerItem" %>
+            <%= link_to raw("Host your home"), listings_url, class: "nav-item nav-link text-dark headerItem"%>
+            <%= link_to raw("About Us"), about_us_url, class: "nav-item nav-link text-dark headerItem"%>
+            <%= link_to raw("Contact Us"), contact_us_url, class: "nav-item nav-link text-dark headerItem"%>
+        </nav>
+    </div>
+
+    <nav class="d-lg-none navbar navbar-expand-lg navbar-dark header">
+        <a class="navbar-brand text-white MontserratFont ml-5 pl-5 " href="#"><i class="fa fa-home"></i>&nbsp;Traveller's Nomadic Hut</a>
+        <button class="navbar-toggler headerDropdown mr-5" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ml-2 pl-2">
+                <%= link_to raw("<i class='fa fa-home'></i> Home"), root_url, class: "text-white dropdown-item" %>
+                <%= link_to raw("<i class='fa fa-home'></i> Host your home"), listings_url, class: "text-white dropdown-item"%>
+                <%= link_to raw("<i class='fa fa-user'></i> About Us"), about_us_url, class: "text-white dropdown-item"%>
+                <%= link_to raw("<i class='fa fa-phone'></i> Contact Us"), contact_us_url, class: "text-white dropdown-item"%>
+            </ul>
+        </div>
     </nav>
 </div>

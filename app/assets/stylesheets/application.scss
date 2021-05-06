@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+@import 'jquery-ui/datepicker.css';
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -47,8 +48,6 @@
 }
 
 .headerDropdown {
-  min-width: 80px;
-  min-height: 30px;
   border-radius: 50px;
   border-style: none;
   background-color: #16f063;
@@ -122,4 +121,28 @@
 
 .greenText {
   color: #16f063;
+}
+
+.nav-pills > li > a.active {
+  background-color: #16f063 !important;
+  color: white !important;
+  border-radius: 50px;
+}
+
+.nav-pills > li > a:hover,
+.nav-pills > li > a:focus {
+  background-color: #16ce56 !important;
+  color: white !important;
+  border-radius: 50px;
+}
+
+.mobile-footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #000000;
+  height: 150px;
+  padding-top: 25px;
+  font-family: Montserrat, sans-serif;
 }

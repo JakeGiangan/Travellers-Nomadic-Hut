@@ -1,19 +1,52 @@
 <% provide(:title, "Home") %>
-<div class="parallax">
-    <div class="caption">
-        <span class="text-white"><h1 class="MontserratFont">Travelling and Living <br/> made Simple and Elegant </h1></span>
+<div class="parallax d-flex justify-content-end align-middle">
+    <div class="position-absolute text-right mt-5 pt-5 pb-5 pr-5">
+        <span class="text-white mt-5 pt-5"><h1 class="MontserratFont mt-5 pt-5 mr-5 pr-5">Travelling and Living <br/> made Simple and Elegant </h1></span>
     </div>
 </div>
 
 
-<div class="col-lg-12 d-flex justify-content-center callToAction">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center callToAction h-100">
     <%= form_tag search_path, :method => :get do %>
-        <div class="row d-flex justify-content-center">
-            <%= text_field_tag :search, params[:search], class: "col-lg-6 roundedFormField", placeholder: "Location Address", style: "margin-top: 40px; margin-bottom: 15px;" %>
-            <%= text_field_tag :check_in_date, params[:check_in_date], id: "check_in_date", class: "form-control col-lg-2", readonly: true, placeholder: "Check In Date", style: "margin-top: 40px; margin-bottom: 15px; margin-right: 15px;margin-left: 30px;" %>
-            <%= text_field_tag :check_out_date, params[:check_out_date], id: "check_out_date", class: "form-control col-lg-2", readonly: true, placeholder: "Check Out Date", style: "margin-top: 40px; margin-bottom: 15px; margin-right: 30px;margin-left: 15px;" , disabled: true %>
+        <div class="d-none d-lg-block">
+            <div class="row d-flex justify-content-center">
+                <%= text_field_tag :search, params[:search], class: "col-lg-6 col-md-6 col-sm-12 col-xs-12 roundedFormField", placeholder: "Location Address", style: "margin-top: 40px; margin-bottom: 15px;" %>
+                <%= text_field_tag :check_in_date, params[:check_in_date], id: "check_in_date", class: "form-control col-lg-2 col-md-2 col-sm-12 col-xs-12", readonly: true, placeholder: "Check In Date", style: "margin-top: 40px; margin-bottom: 15px; margin-right: 15px;margin-left: 30px;" %>
+                <%= text_field_tag :check_out_date, params[:check_out_date], id: "check_out_date", class: "form-control col-lg-2 col-md-2 col-sm-12 col-xs-12", readonly: true, placeholder: "Check Out Date", style: "margin-top: 40px; margin-bottom: 15px; margin-right: 30px;margin-left: 15px;" , disabled: true %>
 
-            <%= submit_tag "Lets find a place to stay...", class: "btn roundedGreenButton callToActionButton" %>
+                <%= submit_tag "Lets find a place to stay...", class: "btn roundedGreenButton callToActionButton mb-5" %>
+            </div>
+        </div>
+        <div class="row d-lg-none justify-content-center pt-5">
+            <%= text_field_tag :search, params[:search], class: "row my-2 px-2 form-control col-sm-12 col-xs-12 roundedFormField", placeholder: "Location Address" %>
+            <%= text_field_tag :check_in_date, params[:check_in_date], id: "check_in_date_mobile", class: "row my-2 px-2 form-control col-sm-12 col-xs-12", readonly: true, placeholder: "Check In Date" %>
+            <%= text_field_tag :check_out_date, params[:check_out_date], id: "check_out_date_mobile", class: "row my-2 px-2 form-control col-sm-12 col-xs-12", readonly: true, placeholder: "Check Out Date", disabled: true %>
+
+            <%= submit_tag "Lets find a place to stay...", class: "btn roundedGreenButton callToActionButton mt-3 mb-5" %>
+                <script>
+                $(function() {
+                    $("#check_in_date_mobile").datepicker({
+                        numberOfMonths:1,
+                        dateFormat: 'yy-mm-dd',
+                        minDate: 0,
+                        maxDate: '3m',
+                        onSelect: function(selectedDate) {
+                            $("#check_out_date_mobile").datepicker("option", "minDate", selectedDate);
+                            $('#check_out_date_mobile').attr("disabled", false);
+                        }
+                    });
+
+                    $("#check_out_date_mobile").datepicker({
+                        numberOfMonths:1,
+                        dateFormat: 'yy-mm-dd',
+                        minDate: 0,
+                        maxDate: '3m',
+                        onSelect: function(selectedDate) {
+                            $("#check_in_date_mobile").datepicker("option", "maxDate", selectedDate);
+                        }
+                    });
+                });
+            </script>
         </div>
         <script>
             $(function() {
@@ -45,25 +78,55 @@
 <div class="container-fluid">
     <div class="offset-lg-2">
         <div class="row" style="margin-bottom: 50px;">
-            <div class="col col-lg-5">
-            <h1 style="margin-top: 50px;">Home Gallery</h1>
-            <hr style="background-color: #16f063;height: 15px; width:500px;margin-left: 0px;" />
-            <div class="row" style="margin-top: 125px">
-                <div class="col">
-                    <%= image_tag('home/1.jpg', class:'firstImage')%>
-                </div>
-            </div>
-            </div>
-            <div class="col col-lg-5">
-                <div class="row">
-                    <div class="col">
-                        <%= image_tag('home/2.jpg', class:'secondImage') %>
+            <div class="col col-lg-5">    
+                <h1 style="margin-top: 50px;">Home Gallery</h1>
+                <hr class="w-100 ml-2" style="background-color: #16f063;height: 15px;" />
+                <div class="row  d-none d-lg-block" style="margin-top: 125px">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <%= image_tag('home/1.jpg', class:'w-100')%>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <%= image_tag('home/3.jpg', class:'thirdImage') %>
+            </div>
+            <div class="col col-lg-5 mt-5 pb-5">
+                <div class="row d-none d-lg-block">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-3">
+                        <%= image_tag('home/2.jpg', class:'w-100') %>
                     </div>
+                </div>
+                <div class="row d-none d-lg-block">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pt-3">
+                        <%= image_tag('home/3.jpg', class:'w-100') %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row d-lg-none mb-5 pb-5" style="margin-bottom: 50px;">
+            <div class="col-sm-12 col-xs-12">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%= image_tag('home/1.jpg', class:'d-block w-100 h-50') %>
+                        </div>
+                        <div class="carousel-item">
+                            <%= image_tag('home/2.jpg', class:'d-block w-100 h-50') %>
+                        </div>
+                        <div class="carousel-item">
+                            <%= image_tag('home/3.jpg', class:'d-block w-100') %>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
             </div>
         </div>
