@@ -1,12 +1,12 @@
 <div role="tabpanel" class="tab-pane fade show active" id="tab-3">
     <div class="row" style="margin-top: 50px; margin-bottom: 230px;">
-        <div class="col">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center">
             <% if @carousel.present? %>
                 <div class="carousel slide" data-ride="carousel" id="carousel-1">
                     <div class="carousel-inner" role="listbox">
                         <% @carousel.each do |image| %>
                             <div class="carousel-item <%= image.id == @carousel.first.id ? 'active' : '' %>">
-                                <%= image_tag image.image, class: "mw-100 d-block gallery" %>
+                                <%= image_tag image.image, class: "mw-100 d-block gallery h-100" %>
                             </div>
                         <% end %>                    
                     </div>

@@ -1,44 +1,52 @@
 <% provide(:title, "Sign up") %>
 <div>
-    <div class="signupHeadingBG">
-        <h1 class="text-white hostHeadingCaption">Sign up and start Hosting Today<br /> or find your well deserved staycation</h1>
+    <div class="signupHeadingBG d-flex justify-content-end align-middle">
+        <div class="position-absolute text-right mt-5 pt-5 pb-5 pr-5">
+            <span class="text-white mt-5 pt-5"><h1 class="MontserratFont mt-5 pt-5 mr-5 pr-5">Sign up and start Hosting Today<br /> or find your well deserved staycation</h1></span>
+        </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col MontserratFont">
                 <h1 style="margin-top: 40px;">Sign up Information</h1>
                 <hr />
             </div>
         </div>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <div class="row fieldRowSpace" >
-                <div class="col-lg-6">
-                    <%= f.text_field :name, required: 'required', class: "roundedFormField col-lg-11" ,placeholder: "First Name" %>
+            <div class="row my-5" >
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <%= f.text_field :name, required: 'required', class: "roundedFormField col-lg-12" ,placeholder: "First Name" %>
                 </div>         
-                <div class="col-lg-6">
-                    <%= f.email_field :email, required: 'required', class: "roundedFormField col-lg-11" ,placeholder: "Email Address" %>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <%= f.email_field :email, required: 'required', class: "roundedFormField col-lg-12" ,placeholder: "Email Address" %>
                 </div>
             </div>
-            <div class="row fieldRowSpace" >
-                <div class="col">
-                    <%= f.number_field :contact_number, required: 'required', class: "roundedFormField fieldItemWidth" ,placeholder: "Contact Number" %>
-                </div>
-                <div class="col">
-                    <%= f.password_field :password, required: 'required', class: "roundedFormField fieldItemWidth" ,placeholder: "Password" %>
-                </div>
-                <div class="col">
-                    <%= f.password_field :password_confirmation, required: 'required', class: "roundedFormField fieldItemWidth" ,placeholder: "Password" %>
+
+            <div class="row my-5">
+                <div class="col-sm-12 col-xs-12">
+                    <%= f.number_field :contact_number, required: 'required', class: "roundedFormField col-sm-12 col-xs-12" ,placeholder: "Contact Number" %>
                 </div>
             </div>
-            <div class="row fieldRowSpace">
-                <div class="col d-xl-flex justify-content-xl-center">
+
+            <div class="row my-5">
+                <div class="col-sm-6 col-xs-6">
+                    <%= f.password_field :password, required: 'required', class: "roundedFormField col-sm-12 col-xs-12" ,placeholder: "Password" %>
+                </div>
+                
+                <div class="col-sm-6 col-xs-6">
+                    <%= f.password_field :password_confirmation, required: 'required', class: "roundedFormField col-sm-12 col-xs-12" ,placeholder: "Password" %>
+                </div>
+            </div>
+
+            <div class="row my-5">
+                <div class="col d-flex justify-content-center">
                     <%= f.submit "Sign up", class: "btn btn-outline-success roundedButton", style: "margin-right: 20px;" %>
                     <%= link_to "Cancel", root_url,class: "btn btn-outline-danger roundedButton", style: "margin-left: 20px;" %>
                 </div>
             </div>
-            <div class="row fieldRowSpace" style="margin-bottom: 100px">
-                <div class="col d-xl-flex justify-content-xl-center">
+            <div class="row my-5 pb-5" style="margin-bottom: 100px">
+                <div class="col d-flex justify-content-center">
                     <%= link_to "Sign up with Facebook", user_facebook_omniauth_authorize_path, class: "btn btn-outline-primary roundedButton" %>
                 </div>
             </div>

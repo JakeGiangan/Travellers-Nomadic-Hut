@@ -1,10 +1,10 @@
 <% provide(:title, "Bookings") %>
-<div class="container" style="margin-top: 100px">
-    <div class="row" style="margin-top: 50px">
+<div class="container-fluid">
+    <div class="row">
         <%= render 'layouts/navigation' %>
         <div class="col">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row mt-5 pt-5">
                     <div class="col">
                         <h1>Bookings</h1>
                         <hr />
@@ -14,14 +14,20 @@
                     <div class="col">
                         <div style="margin-top: 25px; margin-bottom: 100px;">
                             <ul class="nav nav-tabs">
-                                <li class="nav-item"><a role="tab" data-toggle="tab" class="nav-link active" href="#tab-1">Your Listing Bookings</a></li>
-                                <li class="nav-item"><a role="tab" data-toggle="tab" class="nav-link" href="#tab-2">Your trips</a></li>
+                                <li class="nav-item"><a role="tab" data-toggle="tab" class="nav-link active" href="#tab-1">
+                                <div class="d-none d-lg-block">Your Listing Bookings</div>
+                                <div class="d-lg-none"><h2>Your Listing Bookings</h2></div>
+                                </a></li>
+                                <li class="nav-item"><a role="tab" data-toggle="tab" class="nav-link" href="#tab-2">
+                                <div class="d-none d-lg-block">Your Trips</div>
+                                <div class="d-lg-none"><h2>Your Trips</h2></div>
+                                </a></li>
                             </ul>
                             <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="tab-1">
+                                <div role="tabpanel" class="tab-pane fade show active" id="tab-1">
                                     <%= render 'your_listing_bookings' %>
                                 </div>
-                                <div role="tabpanel" class="tab-pane" id="tab-2">
+                                <div role="tabpanel" class="tab-pane fade" id="tab-2">
                                     <%= render 'your_trips' %>
                                 </div>
                             </div>

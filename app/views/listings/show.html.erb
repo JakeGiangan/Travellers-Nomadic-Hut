@@ -14,7 +14,7 @@
         });
 
         var infoWindow = new google.maps.InfoWindow({
-            content: '<div id="content"><%= image_tag @listing.images.first.image, size: "400x200" %></div>'
+            content: '<div id="content"><% if @listing.images.present? %><%= image_tag @listing.images.first.image, size: "400x200" %><%else%><p>No Image Found</p> <%end%></div>'
         });
 
         infoWindow.open(map, marker);
@@ -31,24 +31,46 @@
     </div>
 <% else %>
     <div> 
-        <h1 class="text-danger d-xl-flex justify-content-xl-center" style="margin-top: 250px;margin-bottom: 150px;"> No Image uploaded! </h1>
+        <h1 class="text-danger d-flex justify-content-center" style="margin-top: 250px;margin-bottom: 150px;"> No Image uploaded! </h1>
     </div>
 <% end %>
 <div class="container">
     <div class="row" style="margin-top: 55px;">
-        <div class="col-xl-8">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-8">
             <p><span style="font-size: 42px;color: #16f063;"><%= @listing.listing_name %></span> <br/> Hosted by <%= @host_details.name %></p>
         </div>
-        <div class="col-xl-4">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
             <div class="row" style="margin-top: 22px;">
                 <div class="col">
                     <% if @listing.user_id == current_user.id %>
-                            <%= link_to raw("<i class='fa fa-pen'></i> Edit"), room_listing_path(@listing), class: "btn btn-outline-info roundedButton", style: "margin-right: 15px; margin-left: 50px"  %>
-                            <%= link_to raw("<i class='fa fa-trash'></i> Delete"), listing_url(@listing), class: "btn btn-outline-danger roundedButton", method: :delete, data: { confirm: "You sure?" },  style:"margin-left: 15px " %>
+                            <div class="d-none d-lg-block">
+                                <%= link_to raw("<i class='fa fa-pen'></i> Edit"), room_listing_path(@listing), class: "btn btn-outline-info roundedButton", style: "margin-right: 15px; margin-left: 50px"  %>
+                                <%= link_to raw("<i class='fa fa-trash'></i> Delete"), listing_url(@listing), class: "btn btn-outline-danger roundedButton", method: :delete, data: { confirm: "You sure?" },  style:"margin-left: 15px " %>
+                            </div>
+                            <div class="d-lg-none">
+                                <div class="d-flex justify-content-end">
+                                    <%= link_to raw("<i class='fa fa-pen'></i>"), room_listing_path(@listing), class: "btn btn-outline-info roundedButton" %>
+                                    <%= link_to raw("<i class='fa fa-trash'></i>"), listing_url(@listing), class: "btn btn-outline-danger roundedButton", method: :delete, data: { confirm: "You sure?" } %>
+                                </div>
+                            </div>
                     <%end%>
-                    <h4 style="margin-bottom: 15px;"><%= pluralize(@listing_reviews.count, "Review", ) %>: <span id="general-stars" data-score="<%= @review_average %>"></span> </h4>
+                    <div class="d-none d-lg-block">
+                        <h4 style="margin-bottom: 15px;"><%= pluralize(@listing_reviews.count, "Review", ) %>: <span id="general-stars" data-score="<%= @review_average %>"></span> </h4>
+                    </div>
+                    <div class="d-lg-none">
+                        <p class="text-right mt-2" style="margin-bottom: 15px;"><%= pluralize(@listing_reviews.count, "Review", ) %>: <br/> <span id="general-stars-mobile" data-score="<%= @review_average %>"></span> </p>
+                    </div>
                     <script>
                         $('#general-stars').raty({
+                            readOnly: true,
+                            score: function() {
+                                return $(this).attr('data-score');
+                            },
+                            path: '/assets/'
+                        });
+                    </script>
+                    <script>
+                        $('#general-stars-mobile').raty({
                             readOnly: true,
                             score: function() {
                                 return $(this).attr('data-score');
@@ -64,14 +86,14 @@
         <div class="col">
             <div>
                 <hr />
-                <ul class="nav nav-pills d-xl-flex justify-content-xl-center">
+                <ul class="nav nav-pills d-flex justify-content-center">
                     <li class="nav-item pill-1"><a role="tab" data-toggle="pill" class="nav-link active" href="#tab-1">Details</a></li>
                     <li class="nav-item pill-1"><a role="tab" data-toggle="pill" class="nav-link " href="#tab-2">Host Information</a></li>
                     <li class="nav-item pill-1"><a role="tab" data-toggle="pill" class="nav-link " href="#tab-3">Gallery</a></li>
                     <li class="nav-item pill-1"><a role="tab" data-toggle="pill" class="nav-link " href="#tab-4">Reviews</a></li>
                 </ul>
                 <div class="tab-content">
-                     <%= render 'details' %>
+                    <%= render 'details' %>
                     <div role="tabpanel" class="tab-pane fade" id="tab-2">
                         <%= render 'host_information' %>
                     </div>
