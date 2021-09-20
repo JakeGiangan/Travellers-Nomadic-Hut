@@ -151,19 +151,16 @@
                 </div>
             <% end %>
         </div>
-        <% if @listing_list.nil? == false && @listing_list.empty? == false %>
-            <div class="col-lg-4">
-                <div id="map" style="min-width: 200px;height: 400px;"></div>
-            </div>
-        <% end %>
-
-            <div class="d-none d-lg-block">
-                <div class="row" style="margin-top: 25px;">
-                    <div class="col d-xl-flex justify-content-xl-center">
-                        <%= will_paginate @listing_list %>
-                    </div>
+            <% if @listing_list.nil? == false && @listing_list.empty? == false %>
+                <div class="col-lg-4">
+                    <div id="map" style="min-width: 200px;height: 400px;"></div>
                 </div>
+            <% end %>
+        </div>
+        <div class="row d-none d-xl-block" style="margin-top: 25px;">
+            <div class="col d-flex justify-content-center">
+                <%= will_paginate @listing_list %>
             </div>
         </div>
-    </div>
+    </div>    
 </div>
